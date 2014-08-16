@@ -1,12 +1,12 @@
 <?php
-include 'simple_connect.php';
+include 'config.php';
 
 $name = $_POST['name'];                             //taking values from the form
 $city = $_POST['city'];                             //taking values from the form
 
 if(!$_POST['submit']){
 	echo "fill out the form";
-	header('Location:test2.php');
+	header('Location:config.php');
 
 }else{
 	mysql_query("INSERT INTO public (`NAME`,`CITY`)   //the database coloumns
