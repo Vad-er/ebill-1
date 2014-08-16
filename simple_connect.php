@@ -1,3 +1,7 @@
+/*
+if the database doesn't connect try port no with localhost in line 11 (frequent error)'
+*/
+
 <?php
 //phpinfo();
 $user ='root';					//default username for xampp user	
