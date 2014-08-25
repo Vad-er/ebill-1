@@ -33,10 +33,10 @@ USE `ebill`;
 
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
-  `aid` int(11) NOT NULL,
-  `aname` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `pass` varchar(300) NOT NULL
+  `id` int(14) NOT NULL PRIMARY KEY,
+  `name` varchar(40) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `pass` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -49,11 +49,47 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 DROP TABLE IF EXISTS `bill`;
 CREATE TABLE IF NOT EXISTS `bill` (
-  `billid` int(11) NOT NULL,
-  `amount` int(11) NOT NULL,
-  `ucon` int(11) NOT NULL,
-  `date` int(11) NOT NULL,
-  `status` varchar(10) NOT NULL
+  `id` int(14) NOT NULL PRIMARY KEY,
+  `aid` int(14) NOT NULL,
+  `uid` int(14) NOT NULL,
+  `units` decimal(10,2) NOT NULL,
+  `amount` int(10) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `bdate` date NOT NULL;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction`
+--
+-- Creation: Aug 12, 2014 at 11:27 AM
+--
+
+DROP TABLE IF EXISTS `transaction`;
+CREATE TABLE IF NOT EXISTS `transaction` (
+  `id` int(14) NOT NULL PRIMARY KEY,
+  `bid` int(14) NOT NULL ,
+  `payable` int(10) NOT NULL,
+  `date` timestamp NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+-- Creation: Aug 12, 2014 at 11:26 AM
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(14) NOT NULL PRIMARY KEY,
+  `name` varchar(40) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `phone` int(14) NOT NULL,
+  `pass` varchar(20) NOT NULL,
+  `address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -66,28 +102,11 @@ CREATE TABLE IF NOT EXISTS `bill` (
 
 DROP TABLE IF EXISTS `complaint`;
 CREATE TABLE IF NOT EXISTS `complaint` (
-  `coid` int(11) NOT NULL,
+  `id` int(14) NOT NULL PRIMARY KEY,
+  `uid` int(14) NOT NULL,
+  `aid` int(14) NOT NULL,
   `message` varchar(140) NOT NULL,
   `status` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer`
---
--- Creation: Aug 12, 2014 at 11:26 AM
---
-
-DROP TABLE IF EXISTS `customer`;
-CREATE TABLE IF NOT EXISTS `customer` (
-  `cid` int(11) NOT NULL,
-  `cname` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `phone` varchar(50) NOT NULL,
-  `pass` varchar(300) NOT NULL,
-  `status` varchar(30) NOT NULL,
-  `address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -100,10 +119,39 @@ CREATE TABLE IF NOT EXISTS `customer` (
 
 DROP TABLE IF EXISTS `discussion`;
 CREATE TABLE IF NOT EXISTS `discussion` (
-  `comid` int(11) NOT NULL,
-  `message` varchar(140) NOT NULL
+  `id` int(11) NOT NULL PRIMARY KEY,  
+  `uid` int(11) NOT NULL,
+  `aid` int (11) NOT NULL,
+  `message` text NOT NULL,
+  `time` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Constraints for table `bill`
+--
+ALTER TABLE `bill`
+  ADD  FOREIGN KEY (`aid`) REFERENCES `admin` (`aid`),
+  ADD  FOREIGN KEY (`uid`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `transaction`
+--
+ALTER TABLE `transaction`
+  ADD  FOREIGN KEY (`bid`) REFERENCES `bill` (`id`);
+
+--
+-- Constraints for table `complaint`
+--
+ALTER TABLE `complaint`
+  ADD  FOREIGN KEY (`uid`) REFERENCES `user` (`uid`),
+  ADD  FOREIGN KEY (`aid`) REFERENCES `admin` (`aid`);
+
+--
+-- Constraints for table `discussion`
+--
+ALTER TABLE `discussion`
+  ADD  FOREIGN KEY (`uid`) REFERENCES `user` (`uid`),
+  ADD  FOREIGN KEY (`aid`) REFERENCES `admin` (`aid`);
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
