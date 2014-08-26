@@ -41,40 +41,6 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `bill`
---
--- Creation: Aug 12, 2014 at 11:27 AM
---
-
-DROP TABLE IF EXISTS `bill`;
-CREATE TABLE IF NOT EXISTS `bill` (
-  `id` int(14) NOT NULL PRIMARY KEY,
-  `aid` int(14) NOT NULL,
-  `uid` int(14) NOT NULL,
-  `units` decimal(10,2) NOT NULL,
-  `amount` int(10) NOT NULL,
-  `status` varchar(10) NOT NULL,
-  `bdate` date NOT NULL;
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transaction`
---
--- Creation: Aug 12, 2014 at 11:27 AM
---
-
-DROP TABLE IF EXISTS `transaction`;
-CREATE TABLE IF NOT EXISTS `transaction` (
-  `id` int(14) NOT NULL PRIMARY KEY,
-  `bid` int(14) NOT NULL ,
-  `payable` int(10) NOT NULL,
-  `date` timestamp NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `user`
@@ -95,6 +61,44 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `bill`
+--
+-- Creation: Aug 12, 2014 at 11:27 AM
+--
+
+DROP TABLE IF EXISTS `bill`;
+CREATE TABLE IF NOT EXISTS `bill` (
+  `id` int(14) NOT NULL PRIMARY KEY,
+  `aid` int(14) NOT NULL,
+  `uid` int(14) NOT NULL,
+  `units` decimal(10,2) NOT NULL,
+  `amount` int(10) NOT NULL,
+  `status` varchar(10) NOT NULL,
+  `bdate` date NOT NULL,
+  FOREIGN KEY (aid) REFERENCES admin(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (uid) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction`
+--
+-- Creation: Aug 12, 2014 at 11:27 AM
+--
+
+DROP TABLE IF EXISTS `transaction`;
+CREATE TABLE IF NOT EXISTS `transaction` (
+  `id` int(14) NOT NULL PRIMARY KEY,
+  `bid` int(14) NOT NULL ,
+  `payable` int(10) NOT NULL,
+  `date` timestamp NOT NULL,
+  FOREIGN KEY (bid) REFERENCES bill(id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `complaint`
 --
 -- Creation: Aug 12, 2014 at 11:27 AM
@@ -106,7 +110,9 @@ CREATE TABLE IF NOT EXISTS `complaint` (
   `uid` int(14) NOT NULL,
   `aid` int(14) NOT NULL,
   `message` varchar(140) NOT NULL,
-  `status` varchar(10) NOT NULL
+  `status` varchar(10) NOT NULL,
+  FOREIGN KEY (aid) REFERENCES admin(id) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (uid) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -119,39 +125,16 @@ CREATE TABLE IF NOT EXISTS `complaint` (
 
 DROP TABLE IF EXISTS `discussion`;
 CREATE TABLE IF NOT EXISTS `discussion` (
-  `id` int(11) NOT NULL PRIMARY KEY,  
-  `uid` int(11) NOT NULL,
-  `aid` int (11) NOT NULL,
+  `id` int(14) NOT NULL PRIMARY KEY,  
+  `uid` int(14) NOT NULL,
+  `aid` int (14) NOT NULL,
   `message` text NOT NULL,
-  `time` timestamp NOT NULL
+  `time` timestamp NOT NULL,
+  FOREIGN KEY (aid) REFERENCES admin(id)  ON UPDATE CASCADE ON DELETE CASCADE,
+  FOREIGN KEY (uid) REFERENCES user(id)  ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Constraints for table `bill`
---
-ALTER TABLE `bill`
-  ADD  FOREIGN KEY (`aid`) REFERENCES `admin` (`aid`),
-  ADD  FOREIGN KEY (`uid`) REFERENCES `user` (`id`);
 
---
--- Constraints for table `transaction`
---
-ALTER TABLE `transaction`
-  ADD  FOREIGN KEY (`bid`) REFERENCES `bill` (`id`);
-
---
--- Constraints for table `complaint`
---
-ALTER TABLE `complaint`
-  ADD  FOREIGN KEY (`uid`) REFERENCES `user` (`uid`),
-  ADD  FOREIGN KEY (`aid`) REFERENCES `admin` (`aid`);
-
---
--- Constraints for table `discussion`
---
-ALTER TABLE `discussion`
-  ADD  FOREIGN KEY (`uid`) REFERENCES `user` (`uid`),
-  ADD  FOREIGN KEY (`aid`) REFERENCES `admin` (`aid`);
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
