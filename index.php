@@ -1,3 +1,8 @@
+<?php 
+require_once("Includes/config.php");
+require_once("Includes/config.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,12 +47,12 @@
                 <a class="navbar-brand" href="#"><i class="fa fa-bolt"></i><b>Bolt</b></a>
             </div>
             <div class="navbar-collapse collapse">
-                <form class="navbar-form navbar-right" role="form">
+                <form class="navbar-form navbar-right" role="form" method="post">
                     <div class="form-group">
-                        <input type="text" placeholder="Email" class="form-control">
+                        <input type="text" placeholder="Email" name="email" class="form-control">
                     </div>
                     <div class="form-group">
-                        <input type="password" placeholder="Password" class="form-control">
+                        <input type="password" placeholder="Password" name="pass" class="form-control">
                     </div>
                     <div class="btn-group  btn-group-sm">
                         <button type="submit" class="btn btn-success">Sign in</button>
@@ -64,8 +69,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
-                    <h1>Electricity Bill
-                        <br>Management System</h1>
+                    <h1>Electricity Bill<br>Management System</h1>
                     <p>This website at the end of its construction will act as a consumer oriented service for users for easy payment of their respective <b>Electricity Bill</b> as well as interact with their providers in case of any queries or grivances.</p>
                 </div>
                 <!-- /col-lg-6 -->
@@ -205,11 +209,13 @@
         <!-- /row -->
     </div>
     <! --/container -->
-
-    <div class="container">
+    <?php 
+    require_once("footer.php");
+    ?>
+    <!-- <div class="container">
         <hr>
         <p class="centered">Created by Ameen M Khan & Abhishek Bhatnagar</p>
-    </div>
+    </div> -->
     <!-- /container -->
 
 

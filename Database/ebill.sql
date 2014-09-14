@@ -3,7 +3,6 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 12, 2014 at 05:13 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -28,8 +27,6 @@ USE `ebill`;
 --
 -- Table structure for table `admin`
 --
--- Creation: Aug 12, 2014 at 11:27 AM
---
 
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
@@ -39,13 +36,13 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `pass` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+ALTER TABLE admin AUTO_INCREMENT=99999999999990;
+
 -- --------------------------------------------------------
 
 
 --
 -- Table structure for table `user`
---
--- Creation: Aug 12, 2014 at 11:26 AM
 --
 
 DROP TABLE IF EXISTS `user`;
@@ -58,12 +55,12 @@ CREATE TABLE IF NOT EXISTS `user` (
   `address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+ALTER TABLE user AUTO_INCREMENT=1;
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `bill`
---
--- Creation: Aug 12, 2014 at 11:27 AM
 --
 
 DROP TABLE IF EXISTS `bill`;
@@ -79,12 +76,12 @@ CREATE TABLE IF NOT EXISTS `bill` (
   FOREIGN KEY (uid) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+ALTER TABLE bill AUTO_INCREMENT=1;
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `transaction`
---
--- Creation: Aug 12, 2014 at 11:27 AM
 --
 
 DROP TABLE IF EXISTS `transaction`;
@@ -96,12 +93,12 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   FOREIGN KEY (bid) REFERENCES bill(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+ALTER TABLE transaction AUTO_INCREMENT=1;
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `complaint`
---
--- Creation: Aug 12, 2014 at 11:27 AM
 --
 
 DROP TABLE IF EXISTS `complaint`;
@@ -115,12 +112,12 @@ CREATE TABLE IF NOT EXISTS `complaint` (
   FOREIGN KEY (uid) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+ALTER TABLE complaint AUTO_INCREMENT=1;
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `discussion`
---
--- Creation: Aug 12, 2014 at 11:27 AM
 --
 
 DROP TABLE IF EXISTS `discussion`;
@@ -133,6 +130,8 @@ CREATE TABLE IF NOT EXISTS `discussion` (
   FOREIGN KEY (aid) REFERENCES admin(id)  ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (uid) REFERENCES user(id)  ON UPDATE CASCADE ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE discussion AUTO_INCREMENT=1;
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
