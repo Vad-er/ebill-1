@@ -79,7 +79,7 @@ require_once("Includes/config.php");
         <div class="row mt centered">
             <div class="col-lg-6 col-lg-offset-3">
                 <h1>How this Portal woks</h1>
-                <h3>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h3>
+                <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque tempora esse, inventore asperiores necessitatibus porro, beatae dolore numquam odit voluptatum fugiat voluptatem doloremque et rem, repellat eum facere. Blanditiis, distinctio.</h3>
             </div>
         </div>
         <!-- /row -->
@@ -87,23 +87,23 @@ require_once("Includes/config.php");
         <div class="row mt centered">
             <div class="col-lg-4">
                 <img src="assets/img/ser01.png" width="180" alt="">
-                <h4>1 - Browser Compatibility</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                <h4>1 - Login</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda impedit architecto a labore eum saepe fugiat ex culpa, ab dolor asperiores eligendi dolore temporibus, suscipit quo magni odio iusto quasi?</p>
             </div>
             <!--/col-lg-4 -->
 
             <div class="col-lg-4">
                 <img src="assets/img/ser02.png" width="180" alt="">
-                <h4>2 - Email Campaigns</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                <h4>2 - Peruse Bills</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet fuga deserunt similique, iure tenetur debitis perspiciatis, modi aut dolores illum iste, in error animi accusantium possimus rerum dolor facilis sequi.</p>
 
             </div>
             <!--/col-lg-4 -->
 
             <div class="col-lg-4">
                 <img src="assets/img/ser03.png" width="180" alt="">
-                <h4>3 - Gather Your Notes</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever.</p>
+                <h4>3 - Transact</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ducimus, vitae tempore recusandae explicabo sapiente eligendi voluptates repellat voluptatem porro. Facere porro, odit exercitationem, ducimus quis quam quasi id magnam.</p>
 
             </div>
             <!--/col-lg-4 -->
