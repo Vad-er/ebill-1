@@ -72,6 +72,7 @@ CREATE TABLE IF NOT EXISTS `bill` (
   `amount` int(10) NOT NULL,
   `status` varchar(10) NOT NULL,
   `bdate` date NOT NULL,
+  `ddate` date NOT NULL,
   FOREIGN KEY (aid) REFERENCES admin(id) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (uid) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -90,7 +91,10 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   `bid` int(14) NOT NULL ,
   `payable` int(10) NOT NULL,
   `date` timestamp NOT NULL,
+  `status` varchar(10) NOT NULL,
+  -- FOREIGN KEY (status) REFERENCES bill(status) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (bid) REFERENCES bill(id) ON DELETE CASCADE ON UPDATE CASCADE
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 ALTER TABLE transaction AUTO_INCREMENT=1;
@@ -106,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `complaint` (
   `id` int(14) NOT NULL PRIMARY KEY,
   `uid` int(14) NOT NULL,
   `aid` int(14) NOT NULL,
-  `message` varchar(140) NOT NULL,
+  `complaint` varchar(140) NOT NULL,
   `status` varchar(10) NOT NULL,
   FOREIGN KEY (aid) REFERENCES admin(id) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (uid) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
@@ -117,22 +121,15 @@ ALTER TABLE complaint AUTO_INCREMENT=1;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `discussion`
+-- Table structure for table `unitsRate`
 --
 
-DROP TABLE IF EXISTS `discussion`;
-CREATE TABLE IF NOT EXISTS `discussion` (
-  `id` int(14) NOT NULL PRIMARY KEY,  
-  `uid` int(14) NOT NULL,
-  `aid` int (14) NOT NULL,
-  `message` text NOT NULL,
-  `time` timestamp NOT NULL,
-  FOREIGN KEY (aid) REFERENCES admin(id)  ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (uid) REFERENCES user(id)  ON UPDATE CASCADE ON DELETE CASCADE
+DROP TABLE IF EXISTS `unitsRate`;
+CREATE TABLE IF NOT EXISTS `unitsRate` (
+  `200` int(14) NOT NULL,
+  `500` int(14) NOT NULL,
+  `100` int(14) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-ALTER TABLE discussion AUTO_INCREMENT=1;
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
