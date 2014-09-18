@@ -32,6 +32,11 @@ NO PHP LEAKS BACK TO THE INDEX
         </div>
     </div>
     <div class="form-group">
+        <div class="col-md-12">
+            <input type="address" class="form-control" id="adress" placeholder="Address">
+        </div>
+    </div>
+    <div class="form-group">
         <div class="col-md-10">
             <div class="checkbox">
                 <label>
