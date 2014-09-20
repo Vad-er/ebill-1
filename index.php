@@ -1,6 +1,6 @@
 <?php 
 require_once("Includes/config.php");
-require_once("Includes/config.php");
+require_once("Includes/session.php");
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +27,7 @@ require_once("Includes/config.php");
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
@@ -54,23 +55,25 @@ require_once("Includes/config.php");
     </div>
 
     <div id="headerwrap">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h1>Electricity Bill<br>Management System</h1>
-                    <p>This website at the end of its construction will act as a consumer oriented service for users for easy payment of their respective <b>Electricity Bill</b> as well as interact with their providers in case of any queries or grivances.</p>
-                </div>
-                <!-- /col-lg-6 -->
-                <div class="col-lg-6">
-                    <h1>Sign Up</h1>
-                    <?php require_once("signup.php"); ?>
-                </div>
-                <!-- /col-lg-6 -->
+        <div class="darkhearderwrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 signup">
+                        <h1>Electricity Bill<br>Management System</h1>
+                        <p>This website at the end of its construction will act as a consumer oriented service for users for easy payment of their respective <b>Electricity Bill</b> as well as interact with their providers in case of any queries or grivances.</p>
+                    </div>
+                    <!-- /col-lg-6 -->
+                    <div class="col-lg-6">
+                        <h1>Sign Up</h1>
+                        <?php require_once("signup.php"); ?>
+                    </div>
+                    <!-- /col-lg-6 -->
 
+                </div>
+                <!-- /row -->
             </div>
-            <!-- /row -->
-        </div>
-        <!-- /container -->
+            <!-- /container -->
+            </div>
     </div>
     <!-- /headerwrap -->
 
@@ -156,18 +159,15 @@ require_once("Includes/config.php");
     <?php 
     require_once("footer.php");
     ?>
-    <!-- <div class="container">
-        <hr>
-        <p class="centered">Created by Ameen M Khan & Abhishek Bhatnagar</p>
-    </div> -->
-    <!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
+    <!--=======================JS=========================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- jQuery Version 1.11.0 -->
+    <script src="../assets/js/jquery-1.11.0.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../assets/js/bootstrap.min.js"></script>
 </body>
 
 </html>

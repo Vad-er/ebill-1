@@ -7,10 +7,16 @@
     //checking if anyone(admin/email)is logged in or not
     if(isset($_SESSION['logged']))
     {
-        if ($_SESSION['logged']==true)
+        if ($_SESSION['logged'] == true)
         {
             $logged = true ;
             $email = $_SESSION['email'];
+            if ($_SESSION['account']=="admin") {
+                header("Location:admin/index.html");
+            }
+            elseif ($_SESSION['account']=="user") {
+                header("Location:user/index.html");
+            }
         }
     }
     else
@@ -25,7 +31,7 @@
             $email=$_POST['email'];
             $password=$_POST['pass'];
             // for the purpose of DB searching ->
-            $email = stripcslashes($email);
+            $email = stripslashes($email);
             $email = mysqli_real_escape_string($con,$email);
             $password = stripslashes($password);
             $password = mysqli_real_escape_string($con,$password);
@@ -39,6 +45,7 @@
                 $_SESSION['logged']=true;
                 $_SESSION['email'] = $email;
                 $_SESSION['account']="admin";
+                $_SESSION['logged'] == false;
                 header("Location:admin/index.html");
             }
 
@@ -49,6 +56,7 @@
                 $_SESSION['logged']=true;
                 $_SESSION['email'] = $email;
                 $_SESSION['account']="user";
+                $_SESSION['logged'] == false;
                 header("Location:user/index.html");
             }            
         }

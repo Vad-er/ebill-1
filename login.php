@@ -6,7 +6,7 @@ NO PHP LEAKS BACK TO THE INDEX
   require_once("Includes/config.php");
   require_once("Includes/session.php");
   ?>
-<form class="navbar-form navbar-right" role="form" method="post">
+<form action="index.php" class="navbar-form navbar-right" role="form" method="post">
     <div class="form-group">
         <input type="text" placeholder="Email" name="email" class="form-control">
     </div>

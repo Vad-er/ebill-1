@@ -1,4 +1,4 @@
-<?php
+?php
 include 'config.php';
 
 $name = $_POST['name'];                             //taking values from the form
