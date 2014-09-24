@@ -1,6 +1,19 @@
 <?php 
 require_once("Includes/config.php");
 require_once("Includes/session.php");
+
+if(isset($_SESSION['logged']))
+{
+    if ($_SESSION['logged'] == true)
+    {
+        if ($_SESSION['account']=="admin") {
+                header("Location:admin/index.html");
+            }
+        elseif ($_SESSION['account']=="user") {
+                header("Location:user/index.php");
+            }
+    }    
+}
 ?>
 
 <!DOCTYPE html>

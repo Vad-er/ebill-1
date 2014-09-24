@@ -3,7 +3,6 @@
 <?php  
     session_start();
     $logged = false;
-    
     //checking if anyone(admin/email)is logged in or not
     if(isset($_SESSION['logged']))
     {
@@ -11,12 +10,12 @@
         {
             $logged = true ;
             $email = $_SESSION['email'];
-            if ($_SESSION['account']=="admin") {
-                header("Location:admin/index.html");
-            }
-            elseif ($_SESSION['account']=="user") {
-                header("Location:user/index.html");
-            }
+            // if ($_SESSION['account']=="admin") {
+            //     header("Location:admin/index.html");
+            // }
+            // elseif ($_SESSION['account']=="user") {
+            //     header("Location:user/index.php");
+            // }
         }
     }
     else
@@ -45,7 +44,6 @@
                 $_SESSION['logged']=true;
                 $_SESSION['email'] = $email;
                 $_SESSION['account']="admin";
-                $_SESSION['logged'] == false;
                 header("Location:admin/index.html");
             }
 
@@ -53,11 +51,12 @@
             $result = mysqli_query($con,$sql);
             $count = mysqli_num_rows($result);
             if ($count == 1) {
+                $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+                $_SESSION['user'] = $row['name'];
                 $_SESSION['logged']=true;
                 $_SESSION['email'] = $email;
                 $_SESSION['account']="user";
-                $_SESSION['logged'] == false;
-                header("Location:user/index.html");
+                header("Location:user/index.php");
             }            
         }
     }

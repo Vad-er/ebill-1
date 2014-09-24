@@ -1,6 +1,6 @@
 #wrapper {
     padding-left: 10px;
-    padding-top: 40px;
+    padding-top: 20px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -27,7 +27,7 @@
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
+    width: 230px;
 }
 
 #page-content-wrapper {
@@ -42,6 +42,12 @@
 /* Top Navigation */
 .navbar{
     background: #000;
+}
+.navbar-brand{
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-left: 80px;
 }
 .top-nav {
     padding: 0 20px;
@@ -80,7 +86,7 @@ ul.alert-dropdown {
 
 .sidebar-nav {    
     position: absolute;
-    top: 30px;
+    top: 60px;
     width: 225px;
     margin: 0;
     padding: 0;
@@ -88,12 +94,14 @@ ul.alert-dropdown {
 }
 
 .sidebar-nav li {
-    padding-bottom: 20px;
-    line-height: 60px;
+    padding-bottom: 25px;
+    line-height: 70px;
+    font-family: 'Lato', sans-serif;
+    font-size: 17px;
 }
 
 .sidebar-nav li a {
-    padding-left: 20px;
+    padding-left: 18px;
     display: block;
     text-decoration: none;
     color: #999999;
@@ -102,14 +110,14 @@ ul.alert-dropdown {
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background: rgba(255,255,255,0.049);
+    background: rgba(255,255,255,0.039);
 }
 
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
     text-decoration: none;
     outline: none;
-    background-color: #000 !important;
+    background-color: #101010;
 }
 
 
@@ -138,4 +146,13 @@ ul.alert-dropdown {
         position: relative;
         margin-right: 0;
     }
+}
+.footer {
+  position: absolute;
+  padding-left: 190px;
+  bottom: 21px;
+  width: 100%;
+  text-align: center;
+  /* Set the fixed height of the footer here */
+  height: 60px;
 }
