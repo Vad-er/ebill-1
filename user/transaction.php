@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +7,8 @@
 <body>
 
     <div id="wrapper">
-    
-        <?php 
+
+       <?php 
             require_once("nav.php");
             require_once("sidebar.php");
         ?>
@@ -21,17 +22,16 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Dashboard
-                            <small>{USER} Overview</small>
+                            Transaction
                         </h1>
-                        <!-- <ol class="breadcrumb">
+                        <!-- <ol class="breadcrumb ">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> Dashboard
+                                <i class="fa fa-table"></i> Transaction
                             </li>
                         </ol> -->
-                        <!-- <h2>SOME DATA</h2> -->
-
-                        <a href="#menu-toggle" class="btn btn-default pull-left" id="menu-toggle">Toggle DASH</a>
+                        <h4>{User} Transaction History (linked to and from bill-history bill)goes here</h4>
+                        </ul>
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle DASH</a>
                     </div>
                 </div>
                 <!-- /.row -->
@@ -40,15 +40,18 @@
 
         </div>
         <!-- /#page-content-wrapper -->
+        
+        
+
 
     </div>
     <!-- /#wrapper -->
 
-<?php 
+    <?php 
     require_once("footer.php");
     require_once("js.php");
-?>
-
+    ?>
+    
 </body>
 
 </html>
