@@ -156,3 +156,9 @@ ul.alert-dropdown {
   /* Set the fixed height of the footer here */
   height: 60px;
 }
+
+/* Tables Styles */
+.table-responsive{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

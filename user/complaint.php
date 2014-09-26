@@ -23,29 +23,60 @@
                         <h1 class="page-header">
                             Complaint
                         </h1>
-                        <!-- <ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-edit"></i> Complaint
-                            </li>
-                        </ol> -->
+                        <!-- Pills Tabbed HISTORY | NEW -->
                         <ul class="nav nav-pills nav-justified">
-                            <li class="active"><a href="#processed" data-toggle="pill">Processed</a>
+                            <li class="active"><a href="#history" data-toggle="pill">HISTORY</a>
                             </li>
-                            <li class=""><a href="#pending" data-toggle="pill">Pending</a>
+                            <li class=""><a href="#new" data-toggle="pill">NEW COMPAINT</a>
                             </li>
                         </ul>
                         <div class="tab-content">
-                            <div class="tab-pane fade in active" id="processed">
-                                <h4>{User} complaint history goes here</h4>
-                                <!-- DB RETRIEVAL search db where id is his and status is processed -->
+                            <div class="tab-pane fade in active" id="history">
+                                <!-- <h4>{User} complaint history goes here</h4> -->
+                                <!-- DB RETRIEVAL search db where id is his and status is processed/pending -->
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped table-bordered table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Complaint Date</th>
+                                                <th>Wrong bill</th>
+                                                <th>STATUS</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td height="40">1</td>
+                                                <td>1-9-2014</td>
+                                                <td>Transaction not confirmed</td>
+                                                <td>Processed</td>
+                                            </tr>
+                                            <tr>
+                                                <td height="40">2</td>
+                                                <td>1-9-2014</td>
+                                                <td>Bill not delivered</td>
+                                                <td>Pending</td>
+                                            </tr>
+                                            <tr>
+                                                <td height="40">3</td>
+                                                <td>1-9-2014</td>
+                                                <td>Previous Complaint still pending</td>
+                                                <td>Processed</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
                             </div>
-                            <div class="tab-pane fade" id="pending">
-                                <h4>{User} due bill info goes here</h4>
+                            <div class="tab-pane fade" id="new">
+                                <h4>New complaint Form</h4>
                                 <!-- search db where id is his and status due -->
                             </div>
+                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle DASH</a>
                         </div>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle DASH</a>
                     </div>
+                    <!-- /.row -->
                 </div>
                 <!-- /.row -->
             </div>

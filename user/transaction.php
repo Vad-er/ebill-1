@@ -24,15 +24,46 @@
                         <h1 class="page-header">
                             Transaction
                         </h1>
-                        <!-- <ol class="breadcrumb ">
-                            <li class="active">
-                                <i class="fa fa-table"></i> Transaction
+                        <!-- <h4>Transaction History goes here</h4> -->
+                        <ul class="nav nav-pills nav-justified">
+                            <li class="active"><a href="#history" data-toggle="pill">HISTORY</a>
                             </li>
-                        </ol> -->
-                        <h4>{User} Transaction History (linked to and from bill-history bill)goes here</h4>
                         </ul>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped table-bordered table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Bill Date</th>
+                                        <th>Amount</th>
+                                        <th>Dues (if any)</th>
+                                        <th>Final Amount Payed</th>
+                                        <th>Transaction Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td height="40">1</td>
+                                        <td>1-9-2014</td>
+                                        <td>14000</td>
+                                        <td>300</td>
+                                        <td>14300</td>
+                                        <td>1-10-2014</td>
+                                    </tr>
+                                    <tr>
+                                        <td height="40">2</td>
+                                        <td>1-7-2014</td>
+                                        <td>14000</td>
+                                        <td>0</td>
+                                        <td>14000</td>
+                                        <td>1-8-2014</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle DASH</a>
                     </div>
+                <!-- /.col-lg-12 -->                    
                 </div>
                 <!-- /.row -->
             </div>
