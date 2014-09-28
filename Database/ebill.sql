@@ -30,13 +30,21 @@ USE `ebill`;
 
 DROP TABLE IF EXISTS `admin`;
 CREATE TABLE IF NOT EXISTS `admin` (
-  `id` int(14) NOT NULL PRIMARY KEY,
+  `id` int(14) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(40) NOT NULL,
   `email` varchar(40) NOT NULL,
   `pass` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE admin AUTO_INCREMENT=99999999999990;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO admin (name,email,pass) VALUES
+("admin1","admin1@bolt.com","adminadminadmin"),
+("admin2","admin1@bolt.com","adminadmin");
+
 
 -- --------------------------------------------------------
 
@@ -47,7 +55,7 @@ ALTER TABLE admin AUTO_INCREMENT=99999999999990;
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(14) NOT NULL PRIMARY KEY,
+  `id` int(14) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
   `name` varchar(40) NOT NULL,
   `email` varchar(40) NOT NULL,
   `phone` int(14) NOT NULL,
@@ -55,7 +63,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE user AUTO_INCREMENT=1;
+
+INSERT INTO user (name,email,phone,pass,address) VALUES
+("Ameen Khan","ameenkhan07@gmail.com",9654327656,"qwerty","Jamia nagar")
+("Abhishek Bhatnagar","abhishek@gmail.com",999999999,"qwerty1","Ghaziabad"),
+("Anzal","anzal@gmail.com",9888888888,"qwerty2","Batla House"),
+("Manaf","manaf@gmail.com",9777777777,"qwerty3","Shaheen Bagh"),
+("abc","abc@gmail.com",9666666666,"qwerty7","Jamia");
+
+
 
 -- --------------------------------------------------------
 
@@ -65,7 +81,7 @@ ALTER TABLE user AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `bill`;
 CREATE TABLE IF NOT EXISTS `bill` (
-  `id` int(14) NOT NULL PRIMARY KEY,
+  `id` int(14) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `aid` int(14) NOT NULL,
   `uid` int(14) NOT NULL,
   `units` decimal(10,2) NOT NULL,
@@ -73,11 +89,11 @@ CREATE TABLE IF NOT EXISTS `bill` (
   `status` varchar(10) NOT NULL,
   `bdate` date NOT NULL,
   `ddate` date NOT NULL,
+  UNIQUE (status),
   FOREIGN KEY (aid) REFERENCES admin(id) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (uid) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE bill AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -87,17 +103,16 @@ ALTER TABLE bill AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `transaction`;
 CREATE TABLE IF NOT EXISTS `transaction` (
-  `id` int(14) NOT NULL PRIMARY KEY,
+  `id` int(14) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `bid` int(14) NOT NULL ,
   `payable` int(10) NOT NULL,
   `date` timestamp NOT NULL,
   `status` varchar(10) NOT NULL,
-  -- FOREIGN KEY (status) REFERENCES bill(status) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (status) REFERENCES bill(status) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (bid) REFERENCES bill(id) ON DELETE CASCADE ON UPDATE CASCADE
   
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE transaction AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -107,7 +122,7 @@ ALTER TABLE transaction AUTO_INCREMENT=1;
 
 DROP TABLE IF EXISTS `complaint`;
 CREATE TABLE IF NOT EXISTS `complaint` (
-  `id` int(14) NOT NULL PRIMARY KEY,
+  `id` int(14) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `uid` int(14) NOT NULL,
   `aid` int(14) NOT NULL,
   `complaint` varchar(140) NOT NULL,
@@ -116,7 +131,6 @@ CREATE TABLE IF NOT EXISTS `complaint` (
   FOREIGN KEY (uid) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-ALTER TABLE complaint AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
