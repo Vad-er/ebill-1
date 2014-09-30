@@ -6,6 +6,7 @@
         $query .= ", bill.ddate AS ddate, bill.status AS status ";
         $query .= " FROM user , bill ";
         $query .= " WHERE user.id=bill.uid AND aid={$id} ";
+        $query .= " ORDER BY bill.id DESC";
         $result = mysqli_query($con,$query);
         if($result === FALSE) {
             die(mysql_error()); // TODO: better error handling
@@ -109,5 +110,18 @@
         }
         return array($result1,$result2,);
     }
+
+    function insert_into_transaction($id,$amount){
+            include("config.php");
+            $query = "INSERT INTO transaction (bid,payable,pdate,status) ";
+            $query .= "VALUES ({$id}, {$amount} , NULL , 'PENDING' )";
+            // echo $query3;
+            
+            if (!mysqli_query($con,$query))
+            {
+                die('Error: ' . mysqli_error($con));
+            }
+
+        }
 
  ?>

@@ -28,17 +28,37 @@
     if (isset($_POST['generate_bill'])) {
         if(isset($_POST["units"]) && !empty($_POST["units"]))
         {
+// CONVERTING UNITS TO AMOUNT
             $query1 = "call unitstoamount({$units} , @x)";
-            // echo $query1;
             $result1 = mysqli_query($con,$query1);  
+
+// INSERTING VALUES INTO BILL
             $query  = " INSERT INTO bill (aid , uid , units , amount , status , bdate , ddate )";
             $query .= " VALUES ( {$aid} , {$uid} , {$units} , @x , 'PENDING' , '{$bdate}' , '{$ddate}' )";
-            $result = mysqli_query($con,$query);  
+            $result2 = mysqli_query($con,$query);  
             if (!mysqli_query($con,$query1))
             {
                 die('Error: ' . mysqli_error($con));
             }
-            
+
+// INSERTING VALUES INTO TRANSACTION            
+
+            $query2 = "SELECT id , amount FROM bill WHERE aid={$aid} AND uid={$uid} AND units={$units} ";
+            $query2 .= "AND status='PENDING'  AND bdate='{$bdate}' AND ddate='{$ddate}' ";
+
+            $result3 =mysqli_query($con,$query2);
+            if (!mysqli_query($con,$query2))
+            {
+                die('Error: ' . mysqli_error($con));
+            } 
+
+            $row = mysqli_fetch_row($result3);
+
+            $bid = $row[0];$amount=$row[1];
+            // echo $bid; 
+            // echo " ";
+            // echo $amount;
+            insert_into_transaction($bid,$amount);
             
         }  
     }
