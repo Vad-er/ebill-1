@@ -18,7 +18,7 @@
                 while($row = mysqli_fetch_assoc($result)){
                 ?>
                     <tr>
-                        <form action="generate_bill.php" method="post">
+                        <form action="generate_bill.php" method="post" name="form_gen_bill" onsubmit="return checkInp()">
                             <td height="40"><?php echo $counter ?></td>
 
                             <input type="hidden" name="uid" value=<?php echo $row['uid'] ?> >
@@ -49,4 +49,14 @@
         </table>
 
     </div><!-- ./table-responsive -->
-                                        
+<script>
+    function checkInp()
+    {
+          var x=document.forms["form_gen_bill"]["units"].value;
+          if (isNaN(x)) 
+          {
+            alert("Must input numbers");
+            return false;
+          }
+    }
+</script>
