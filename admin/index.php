@@ -23,13 +23,6 @@
                             <!-- Like bills processed by the admin ; bills generated , unprocessed complaint
                             maybe a stats infograph -->
                         </h1>
-                        <!-- <ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-dashboard"></i> Dashboard
-                            </li>
-                        </ol> -->
-                        <!-- <h2>SOME DATA</h2> -->
-
                         <a href="#menu-toggle" class="btn btn-default pull-left" id="menu-toggle">Toggle DASH</a>
                     </div>
                 </div>
