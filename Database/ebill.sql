@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 -- Dumping data for table `admin`
 --
-
+-- NOTE:implement insertion using stored procedure
 INSERT INTO admin (name,email,pass) VALUES
 ("admin1","admin1@bolt.com","adminadminadmin"),
 ("admin2","admin2@bolt.com","adminadmin");
@@ -63,7 +63,10 @@ CREATE TABLE IF NOT EXISTS `user` (
   `address` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+--
+-- Dumping data for table `user`
+--
+-- NOTE:implement using stored procedure
 INSERT INTO user (name,email,phone,pass,address) VALUES
 ("Ameen Khan","ameenkhan07@gmail.com",9654327656,"qwerty","Jamia nagar"),
 ("Abhishek Bhatnagar","abhishek@gmail.com",999999999,"qwerty1","Ghaziabad"),
@@ -84,17 +87,27 @@ CREATE TABLE IF NOT EXISTS `bill` (
   `id` int(14) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `aid` int(14) NOT NULL,
   `uid` int(14) NOT NULL,
-  `units` decimal(10,2) NOT NULL,
-  `amount` int(10) NOT NULL,
+  `units` int(10) NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
   `status` varchar(10) NOT NULL,
   `bdate` date NOT NULL,
   `ddate` date NOT NULL,
-  UNIQUE (status),
   FOREIGN KEY (aid) REFERENCES admin(id) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (uid) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+--
+-- Dumping data for table `bill`
+--
+
+-- stored procedure to handle duedate and amount(units*rateperunit)
+-- NOTE:
+-- STATUS OF `TRANSACTION` CANNOT BE REFERECED FROM STATUS OF `BILL` BEACUSE OF ITS LACK OF BEING UNIQUE KEY
+-- THEREFORE A TRIGGER HAS TO BE IMPLEMENTED
+INSERT INTO bill (aid,uid,units,amount,status,bdate,ddate) VALUES
+(1,1,700,14000,'PENDING','2014-01-09','2014-01-10'),
+(1,1,800,16000,'PROCESSED','2014-01-07','2014-01-08');
 -- --------------------------------------------------------
 
 --
@@ -106,13 +119,19 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   `id` int(14) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `bid` int(14) NOT NULL ,
   `payable` int(10) NOT NULL,
-  `date` timestamp NOT NULL,
+  `pdate` DATE ,
   `status` varchar(10) NOT NULL,
-  FOREIGN KEY (status) REFERENCES bill(status) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (bid) REFERENCES bill(id) ON DELETE CASCADE ON UPDATE CASCADE
   
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `transaction`
+--
+-- stored procedure to handle duedate extrafees
+INSERT INTO transaction(bid,payable,pdate,status) VALUES
+(1,14000,NULL,'PENDING'),
+(1,16000,'2014-09-09','PROCESSED');
 
 -- --------------------------------------------------------
 
@@ -131,6 +150,12 @@ CREATE TABLE IF NOT EXISTS `complaint` (
   FOREIGN KEY (uid) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `complaint`
+--
+INSERT INTO complaint(uid,aid,complaint,status) VALUES
+(1,1,"Bill shows not processed","NOTPROCESSED"),
+(2,1,"Bill shows not processed","NOTPROCESSED");
 
 -- --------------------------------------------------------
 
@@ -142,9 +167,13 @@ DROP TABLE IF EXISTS `unitsRate`;
 CREATE TABLE IF NOT EXISTS `unitsRate` (
   `200` int(14) NOT NULL,
   `500` int(14) NOT NULL,
-  `100` int(14) NOT NULL
+  `1000` int(14) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `unitsRate`
+--
+INSERT INTO unitsRate VALUES(2,5,10);
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
