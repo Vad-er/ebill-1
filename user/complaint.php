@@ -67,25 +67,19 @@
                             <div class="tab-pane fade" id="new">
                                 <!-- <h4>New complaint Form</h4> -->
                                 <!-- search db where id is his and status due -->
-                                <form class="form-horizontal new_complaint">
+                                <form class="form-horizontal new_complaint"  role="form"  action="sub_complaint.php" method="post">
                                     <!-- Textarea -->
-                                    <div class="control-group">
-                                        <label class="control-label" for="complaint">Complaint</label>
-                                        <div class="controls">                     
-                                          <textarea rows="10" cols="100" id="complaint" name="complaint"></textarea>
-                                        </div>
+                                    <div class="row form-group">
+                                        <!-- <label class="control-label" for="complaint">Complaint</label> -->
+                                        <textarea rows="10" cols="150" id="complaint" name="complaint" placeholder="Complaint Goes here"></textarea>
                                     </div>
 
                                     <!-- Button -->
-                                    <div class="control-group">
-                                        <label class="control-label" for="submit">Submit</label>
-                                        <div class="controls">
-                                            <button id="submit" name="submit" class="btn btn-primary">Submit</button>
-                                        </div>
+                                    <div class="row form-group">
+                                        <button id="submit" name="submit" class="btn btn-primary">Submit</button>
                                     </div>
                                 </form>
                             </div>
-                            <!-- <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle DASH</a> -->
                         </div>
                     </div>
                     <!-- /.row -->

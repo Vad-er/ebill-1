@@ -83,6 +83,7 @@
                                                 <th>Bill Date</th>
                                                 <th>UNITS Consumed</th>
                                                 <th>Due Date</th>
+                                                <th>Amount</th>
                                                 <th>DUES</th>
                                                 <th>Payable</th>
                                                 <th>TRANSACT</th>
@@ -100,6 +101,7 @@
                                                     <td><?php echo $row['bdate'] ?></td>
                                                     <td><?php echo $row['units'] ?></td>
                                                     <td><?php echo $row['ddate'] ?></td>
+                                                    <td><?php echo $row['amount'] ?></td>
                                                     <td><?php echo $row['dues'] ?></td>
                                                     <td><?php echo $row['payable'] ?></td>
                                                     <td>
