@@ -10,12 +10,6 @@
         {
             $logged = true ;
             $email = $_SESSION['email'];
-            // if ($_SESSION['account']=="admin") {
-            //     header("Location:admin/index.html");
-            // }
-            // elseif ($_SESSION['account']=="user") {
-            //     header("Location:user/index.php");
-            // }
         }
     }
     else
@@ -28,13 +22,13 @@
         if (isset($_POST['email']) && isset($_POST['pass']))
         {
             $email=$_POST['email'];
-            $password=$_POST['pass'];
-            // for the purpose of DB searching ->
+            $password=$_POST['pass'];            
+            // some prereq-safeguards for the purpose of DB searching ->
             $email = stripslashes($email);
             $email = mysqli_real_escape_string($con,$email);
             $password = stripslashes($password);
             $password = mysqli_real_escape_string($con,$password);
-            // <-
+            
             //DB HAS 2 TABLES ADMIN AND USER BOTH HAVING THEIR OWN ATTRIBUTES
             //EMAIL AND PASSWORD 
             $sql = "SELECT * FROM admin WHERE email='$email' AND pass='$password' ";
@@ -54,12 +48,11 @@
                 $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
                 $_SESSION['user'] = $row['name'];
                 $_SESSION['logged']=true;
+                $_SESSION['uid']=$row['id'];
                 $_SESSION['email'] = $email;
                 $_SESSION['account']="user";
                 header("Location:user/index.php");
             }            
         }
     }
-    
-
 ?>
