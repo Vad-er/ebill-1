@@ -19,16 +19,18 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Dashboard
-                            <small>{USER} Overview</small>
+                            <small>Overview</small>
                         </h1>
-                        <!-- <ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-dashboard"></i> Dashboard
-                            </li>
-                        </ol> -->
-                        <!-- <h2>SOME DATA</h2> -->
+                      <!--   <?php
+                            require_once("../Includes/session.php");
+                            require_once("../Includes/config.php");
+                            $uid = $_SESSION['uid'];
+                            $sql= " SELECT * FROM complaint where id='$uid' ";
+                            $result = mysqli_query($con,$sql); 
+                            echo mysqli_num_rows($result);
+                        ?> -->
 
-                        <a href="#menu-toggle" class="btn btn-default pull-left" id="menu-toggle">Toggle DASH</a>
+
                     </div>
                 </div>
                 <!-- /.row -->

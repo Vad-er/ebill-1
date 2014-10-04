@@ -1,4 +1,7 @@
-<?php require_once('head_html.php'); ?>
+<?php
+    require_once('../Includes/user.php'); 
+    require_once('head_html.php'); 
+?>
 
 <body>
 
@@ -24,7 +27,7 @@
                         <ul class="nav nav-pills nav-justified">
                             <li class="active"><a href="#history" data-toggle="pill">HISTORY</a>
                             </li>
-                            <li class=""><a href="#new" data-toggle="pill">NEW COMPAINT</a>
+                            <li class=""><a href="#new" data-toggle="pill">NEW COMPLAINT</a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -36,31 +39,26 @@
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>Complaint Date</th>
-                                                <th>Wrong bill</th>
+                                                <th>Complaint</th>
                                                 <th>STATUS</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td height="40">1</td>
-                                                <td>1-9-2014</td>
-                                                <td>Transaction not confirmed</td>
-                                                <td>Processed</td>
-                                            </tr>
-                                            <tr>
-                                                <td height="40">2</td>
-                                                <td>1-9-2014</td>
-                                                <td>Bill not delivered</td>
-                                                <td>Pending</td>
-                                            </tr>
-                                            <tr>
-                                                <td height="40">3</td>
-                                                <td>1-9-2014</td>
-                                                <td>Previous Complaint still pending</td>
-                                                <td>Processed</td>
-                                            </tr>
+                                            <?php 
+                                            $result = retrieve_complaints($_SESSION['uid']);
+                                            // Initialising #
+                                            $counter = 1;
+                                            while($row = mysqli_fetch_assoc($result)){
+                                            ?>
+                                                <tr>
+                                                    <td height="40"><?php echo $counter ?></td>
+                                                    <td><?php echo $row['complaint'] ?></td>
+                                                    <td><?php echo $row['status'] ?></td>
+                                                </tr>
+                                            <?php 
+                                                $counter=$counter+1;
+                                            }
+                                            ?>
                                         </tbody>
                                     </table>
                                 </div>

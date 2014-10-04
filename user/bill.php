@@ -1,4 +1,7 @@
-<?php require_once('head_html.php'); ?>
+<?php 
+    require_once('head_html.php'); 
+    require_once('../Includes/user.php'); 
+?>
 
 <body>
 
@@ -47,22 +50,24 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td height="40">1</td>
-                                                <td>1-9-2014</td>
-                                                <td>700</td>
-                                                <td>14000</td>
-                                                <td>1-10-2014</td>
-                                                <td>PROCESSED</td>
-                                            </tr>
-                                            <tr>
-                                                <td height="40">2</td>
-                                                <td>1-7-2014</td>
-                                                <td>800</td>
-                                                <td>16000</td>
-                                                <td>1-8-2014</td>
-                                                <td>PENDING</td>
-                                            </tr>
+                                            <?php 
+                                            $result = retrieve_bills_history($_SESSION['uid']);
+                                            // Initialising #
+                                            $counter = 1;
+                                            while($row = mysqli_fetch_assoc($result)){
+                                            ?>
+                                                <tr>
+                                                    <td height="40"><?php echo $counter ?></td>
+                                                    <td><?php echo $row['bdate'] ?></td>
+                                                    <td><?php echo $row['units'] ?></td>
+                                                    <td><?php echo $row['amount'] ?></td>
+                                                    <td><?php echo $row['ddate'] ?></td>
+                                                    <td><?php echo $row['status'] ?></td>
+                                                </tr>
+                                            <?php 
+                                                $counter=$counter+1;
+                                            }
+                                            ?>
                                         </tbody>
                                     </table>
 
@@ -80,22 +85,31 @@
                                                 <th>Due Date</th>
                                                 <th>DUES</th>
                                                 <th>Payable</th>
-                                                <th></th>
+                                                <th>TRANSACT</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td height="40">1</td>
-                                                <td>1-8-2014</td>
-                                                <td>700</td>
-                                                <td>1-9-2014</td>
-                                                <td>0</td>
-                                                <td>14000</td>
-                                                <td>
+                                            <?php 
+                                            $result = retrieve_bills_due($_SESSION['uid']);
+                                            // Initialising #
+                                            $counter = 1;
+                                            while($row = mysqli_fetch_assoc($result)){
+                                            ?>
+                                                <tr>
+                                                    <td height="40"><?php echo $counter ?></td>
+                                                    <td><?php echo $row['bdate'] ?></td>
+                                                    <td><?php echo $row['units'] ?></td>
+                                                    <td><?php echo $row['ddate'] ?></td>
+                                                    <td><?php echo $row['dues'] ?></td>
+                                                    <td><?php echo $row['payable'] ?></td>
+                                                    <td>
                                                     <button type="submit" class="btn btn-success">PAY</button>
                                                 </td>
-                                            </tr>
-                                        </tbody>
+                                                </tr>
+                                            <?php 
+                                                $counter=$counter+1;
+                                            }
+                                            ?>
                                     </table>
                                     <!-- search db where id is his and status due -->
                                 </div>
