@@ -154,11 +154,23 @@ ul.alert-dropdown {
   width: 100%;
   text-align: center;
   /* Set the fixed height of the footer here */
-  height: 60px;
+  height: 70px;
 }
 
 /* Tables Styles */
 .table-responsive{
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+.toggler{
+    z-index: 1000;
+    position: absolute;
+    bottom:0px;
+    left:50px;
+}
+.new_complaint{
+    padding-top: 20px;
+    text-align: center;
+    width: auto;
 }

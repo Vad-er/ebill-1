@@ -100,7 +100,6 @@
                                     <!-- search db where id is his and status due -->
                                 </div>
                             </div>
-                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle DASH</a>
                         </div>
                     </div>
                     <!-- /.col-lg-12 -->

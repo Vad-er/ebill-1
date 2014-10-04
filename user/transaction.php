@@ -57,7 +57,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle DASH</a>
+                        <!-- <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle DASH</a> -->
                     </div>
                 <!-- /.col-lg-12 -->                    
                 </div>
