@@ -118,7 +118,7 @@ DROP TABLE IF EXISTS `transaction`;
 CREATE TABLE IF NOT EXISTS `transaction` (
   `id` int(14) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `bid` int(14) NOT NULL ,
-  `payable` int(10) NOT NULL,
+  `payable` decimal(10,2) NOT NULL,
   `pdate` DATE ,
   `status` varchar(10) NOT NULL,
   FOREIGN KEY (bid) REFERENCES bill(id) ON DELETE CASCADE ON UPDATE CASCADE
@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `transaction` (
 -- stored procedure to handle duedate extrafees
 INSERT INTO transaction(bid,payable,pdate,status) VALUES
 (1,14000,NULL,'PENDING'),
-(1,16000,'2014-09-09','PROCESSED');
+(2,16000,'2014-09-09','PROCESSED');
 
 -- --------------------------------------------------------
 
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `complaint` (
   `uid` int(14) NOT NULL,
   `aid` int(14) NOT NULL,
   `complaint` varchar(140) NOT NULL,
-  `status` varchar(10) NOT NULL,
+  `status` varchar(40) NOT NULL,
   FOREIGN KEY (aid) REFERENCES admin(id) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (uid) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -154,8 +154,9 @@ CREATE TABLE IF NOT EXISTS `complaint` (
 -- Dumping data for table `complaint`
 --
 INSERT INTO complaint(uid,aid,complaint,status) VALUES
-(1,1,"Bill shows not processed","NOTPROCESSED"),
-(2,1,"Bill shows not processed","NOTPROCESSED");
+(1,1,"Bill shows not processed","NOT PROCESSED"),
+(2,1,"Transaction not confirmed","NOT PROCESSED"),
+(1,1,"Previous Complaint still pending","NOT PROCESSED");
 
 -- --------------------------------------------------------
 
