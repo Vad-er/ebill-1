@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `bill` (
 -- THEREFORE A TRIGGER HAS TO BE IMPLEMENTED
 INSERT INTO bill (aid,uid,units,amount,status,bdate,ddate) VALUES
 (1,1,700,14000,'PENDING','2014-01-09','2014-01-10'),
-(1,1,800,16000,'PROCESSED','2014-01-07','2014-01-08');
+(1,1,800,16000,'PENDING','2014-01-07','2014-01-08');
 -- --------------------------------------------------------
 
 --
@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `transaction` (
 -- stored procedure to handle duedate extrafees
 INSERT INTO transaction(bid,payable,pdate,status) VALUES
 (1,14000,NULL,'PENDING'),
-(2,16000,'2014-09-09','PROCESSED');
+(2,18000,'2014-09-09','PROCESSED');
 
 -- --------------------------------------------------------
 

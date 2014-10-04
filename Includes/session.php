@@ -38,7 +38,7 @@
                 $_SESSION['logged']=true;
                 $_SESSION['email'] = $email;
                 $_SESSION['account']="admin";
-                header("Location:admin/index.html");
+                header("Location:admin/index.php");
             }
 
             $sql = "SELECT * FROM user WHERE email='$email' AND pass='$password' ";
