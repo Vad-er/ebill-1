@@ -11,3 +11,4 @@ ELECTRICITY BILL MANAGEMENT SYSTEM
 * Tables PAGING  capabilities <essential>
 * Forgot password
 * user dashboard (total bill/transaction/complaints statistics) 
+* Interesting http://webdesign.tutsplus.com/tutorials/creating-a-collection-of-css3-animated-pre-loaders--cms-21978

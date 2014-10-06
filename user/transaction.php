@@ -1,4 +1,10 @@
-<?php require_once('head_html.php'); ?>
+<?php 
+    require_once('head_html.php'); 
+    require_once('../Includes/config.php'); 
+    require_once('../Includes/session.php'); 
+    require_once('../Includes/user.php'); 
+?>
+
 
 <body>
 
@@ -20,11 +26,15 @@
                         <h1 class="page-header">
                             Transaction
                         </h1>
-                        <!-- <h4>Transaction History goes here</h4> -->
-                        <ul class="nav nav-pills nav-justified">
+                        <ol class="breadcrumb">
+                          <li>Transaction</li>
+                          <li class="active">History</li>
+                        </ol>
+                        <!-- <h4>Transaction History</h4> -->
+                       <!--  <ul class="nav nav-pills nav-justified">
                             <li class="active"><a href="#history" data-toggle="pill">HISTORY</a>
                             </li>
-                        </ul>
+                        </ul> -->
                         <div class="table-responsive">
                             <table class="table table-hover table-striped table-bordered table-condensed">
                                 <thead>
@@ -38,23 +48,29 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td height="40">1</td>
-                                        <td>1-9-2014</td>
-                                        <td>14000</td>
-                                        <td>300</td>
-                                        <td>14300</td>
-                                        <td>1-10-2014</td>
-                                    </tr>
-                                    <tr>
-                                        <td height="40">2</td>
-                                        <td>1-7-2014</td>
-                                        <td>14000</td>
-                                        <td>0</td>
-                                        <td>14000</td>
-                                        <td>1-8-2014</td>
-                                    </tr>
-                                </tbody>
+                                            <?php 
+                                            $result = retrieve_transaction_history($_SESSION['uid']);
+                                            // Initialising #
+                                            $counter = 1;
+                                            while($row = mysqli_fetch_assoc($result)){
+                                            ?>
+                                                <tr>
+                                                    <td height="40"><?php echo $counter ?></td>
+                                                    <td><?php echo $row['bdate'] ?></td>
+                                                    <td><?php echo $row['amount'] ?></td>
+                                                    <td><?php echo $row['dues'] ?></td>
+                                                    <td><?php echo $row['payable'] ?></td>
+                                                    <td>
+                                                    <?php 
+                                                        if($row['pdate']!=NULL) echo $row['pdate'];
+                                                        else echo "TRANSACTION PENDING";
+                                                     ?></td>
+                                                </tr>
+                                            <?php 
+                                                $counter=$counter+1;
+                                            }
+                                            ?>
+                                        </tbody>
                             </table>
                         </div>
                         <!-- <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle DASH</a> -->

@@ -1,5 +1,7 @@
 <?php 
     require_once('head_html.php'); 
+    require_once('../Includes/config.php'); 
+    require_once('../Includes/session.php'); 
     require_once('../Includes/user.php'); 
 ?>
 
@@ -69,8 +71,7 @@
                                             }
                                             ?>
                                         </tbody>
-                                    </table>
-
+                                    </table>                          
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="due">

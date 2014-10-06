@@ -16,22 +16,18 @@
         <div id="page-content-wrapper">
 
             <div class="container-fluid">
-
+                
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Complaint
+                            <button class="btn btn-primary" data-toggle="modal" style="position:relative;left:800px" data-target="#Complaint">New Complaint</button>           
                         </h1>
-                        <!-- Pills Tabbed HISTORY | NEW -->
-                        <ul class="nav nav-pills nav-justified">
-                            <li class="active"><a href="#history" data-toggle="pill">HISTORY</a>
-                            </li>
-                            <li class=""><a href="#new" data-toggle="pill">NEW COMPLAINT</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane fade in active" id="history">
+                        <ol class="breadcrumb">
+                          <li>Complaint</li>
+                          <li class="active">History</li>
+                        </ol>
                                 <!-- <h4>{User} complaint history goes here</h4> -->
                                 <!-- DB RETRIEVAL search db where id is his and status is processed/pending -->
                                 <div class="table-responsive">
@@ -63,24 +59,28 @@
                                     </table>
                                 </div>
                                 <!-- /.table-responsive -->
-                            </div>
-                            <div class="tab-pane fade" id="new">
-                                <!-- <h4>New complaint Form</h4> -->
-                                <!-- search db where id is his and status due -->
-                                <form class="form-horizontal new_complaint"  role="form"  action="sub_complaint.php" method="post">
-                                    <!-- Textarea -->
-                                    <div class="row form-group">
-                                        <!-- <label class="control-label" for="complaint">Complaint</label> -->
-                                        <textarea rows="10" cols="150" id="complaint" name="complaint" placeholder="Complaint Goes here"></textarea>
-                                    </div>
 
-                                    <!-- Button -->
-                                    <div class="row form-group">
-                                        <button id="submit" name="submit" class="btn btn-primary">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                                <!-- New colpalin Modal -->
+                                <div class="modal fade" id="Complaint" tabindex="-1" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                <h4 class="modal-title">New Complaint</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="form-horizontal new_complaint"  role="form"  action="sub_complaint.php" method="post">
+                                                    <!-- Textarea -->
+                                                    <div class="row form-group complaint_textarea">
+                                                        <!-- <label class="control-label" for="complaint">Complaint</label> -->
+                                                        <textarea class="form-control" id="complaint" name="complaint" placeholder="Complaint Goes here"></textarea>
+                                                    </div>
+                                                <button id="submit" name="submit" class="btn btn-primary">Submit</button>
+                                            </form>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
                     </div>
                     <!-- /.row -->
                 </div>

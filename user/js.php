@@ -3,6 +3,9 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../assets/js/bootstrap.min.js"></script>
+    
+    <!-- FORM VALIDATION -->
+    
     <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();

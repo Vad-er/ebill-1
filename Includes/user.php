@@ -1,6 +1,5 @@
 <?php 
     
-
     function retrieve_complaints ($id) {
         include("config.php");
         $query = "SELECT * FROM complaint where uid={$id} ";
@@ -23,6 +22,16 @@
         $query .= " bill.amount AS amount ,transaction.payable-bill.amount AS dues ";
         $query .= "FROM bill , transaction ";
         $query .= "WHERE transaction.bid=bill.id AND bill.uid={$id} AND bill.status='PENDING' ";
+        $query .= "ORDER BY ddate desc"; 
+        $result = mysqli_query($con,$query);
+        return $result;
+    }
+    function retrieve_transaction_history($id) {
+        include("config.php");
+        $query  = "SELECT bill.bdate AS bdate, transaction.pdate AS pdate, transaction.payable AS payable, ";
+        $query .= " bill.amount AS amount ,transaction.payable-bill.amount AS dues ";
+        $query .= "FROM bill , transaction ";
+        $query .= "WHERE transaction.bid=bill.id AND bill.uid={$id} ";
         $query .= "ORDER BY ddate desc"; 
         $result = mysqli_query($con,$query);
         return $result;
