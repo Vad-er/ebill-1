@@ -2,145 +2,109 @@
 SINGLE PAGE FORM ALONG WITH VALIDATION
 NO PHP LEAKS BACK TO THE INDEX 
  -->
- <?php
+<?php
 require_once("Includes/session.php");
 $nameErr = $phoneErr = $addrErr = $emailErr = $passwordErr = $confpasswordErr = "";
-
+$name = $email = $password = $confpassword = $address = "";
 $flag=0;
+
+//CHECK IF A VALID FORM STRING
+function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
     {   
+        $email = test_input($_POST['email']); 
+        $password = test_input($_POST["inputPassword"]);
+        $confpassword = test_input($_POST["confirmPassword"]);
+        $address = test_input($_POST["address"]);
+        $email = test_input($_POST['email']);
 
         // NAME VALIDATION
-        // first
-        if (empty($_POST["fname"])) 
-        {
-            $nameErr = "Missing name";
+        if (empty($_POST["name"])) {
+            $nameErr = "Name is required";
             $flag=1;
-        }
-        else 
-        {
-            $fname = $_POST["fname"];
-        }
-        // last
-        if (empty($_POST["lname"])) 
-        {
-            $nameErr = "Missing name";
-            $flag=1;
-        }
-        else 
-        {
-            $fname = $_POST["lname"];
-        }
-
-        // Phone No validation
-        if (empty($_POST["contactNo"])) 
-        {
-            $phoneErr = "Missing";
-            $flag=1;
-        }
-        else 
-        {
-            if(is_numeric($_POST['contactNo']))
-            {
-                $phone = $_POST["contactNo"];
-            }
-            else
-            {
-                $phoneErr = "Phone number can contain only numbers";
+        } else {
+            $name = test_input($_POST["name"]);
+            // check if name only contains letters and whitespace
+            if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+                $nameErr = "Only letters and white space allowed"; 
                 $flag=1;
             }
         }
 
-        // Password Validation
-        if (empty($_POST["inputPassword"])) 
-        {
-            $passwordErr = "missing";
+        // EMAIL VALIDATION
+        if (empty($_POST["email"])) {
+            $emailErr = "Email is required";
             $flag=1;
-        }
-        else 
-        {
-            $password = $_POST["inputPassword"];
-        }
-
-        // Confirm Password
-        if (empty($_POST["confirmPassword"])) 
-        {
-            $confpasswordErr = "missing";
-            $flag=1;
-        }
-        else 
-        {
-            if($_POST['confirmPassword'] == $password)
-            {
-                $confpassword = $_POST["confirmPassword"];
-            }
-            else
-            {
-                $confpasswordErr = "not same as password";
-                $flag = 1;
-            }
-        }
-        // Address Validation        
-        if (empty($_POST["address"])) 
-        {
-            $addrErr = "Missing";
-            $flag=1;
-        }
-        else 
-        {
-            $address = $_POST["address"];
-        }
-        
-        // Email validation
-        if (empty($_POST["email"])) 
-        {
-            $emailErr = "Missing";
-            $flag=1;
-        }
-        else 
-        {
-            if(filter_var($_POST["email"], FILTER_VALIDATE_EMAIL))
-            {
-                $email = $_POST['email'];                
-            }
-            else
-            {
-                $emailErr = "Invalid Mail";
+            } else {
+            $email = test_input($_POST["email"]);
+            // check if e-mail address is well-formed
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $emailErr = "Invalid email format"; 
                 $flag=1;
             }
         }
-           
+
+        // ADDRESS VALIDATION
+        if (empty($_POST["address"])) {
+            $nameErr = "Address is required";
+            $flag=1;
+        } else {
+            $address = test_input($_POST["address"]);
+            // check if address only contains letters and whitespace
+            if (!preg_match("/^[a-zA-Z1-9]*$/",$address)) {
+                $nameErr = "Only letters, numbers and white space allowed";
+                $flag=1; 
+            }
+        }
+
+        //CONTACT VALIDATION
+        if (empty($_POST["contactNo"])) {
+            $flag=1;
+            $contactNo = "";
+        } else {
+            $contactNo = test_input($_POST["contactNo"]);
+            if(!preg_match("/^d{10}$/", $_POST["contactNo"])){
+                $phoneErr="10 digit phone no allowed.";
+                $flag=1;
+            }
+        }
+
+        // PASSWORD VALIDATION
+        // TODO
+
+
         // Only if succeed from the validation thourough put   
         if($flag == 0)
         {
             include("Includes/config.php");
             $sql = "INSERT INTO user (`name`,`email`,`phone`,`pass`,`address`)
-                    VALUES('$fname $lname','$email','$phone','$password','$address')";
+                    VALUES('$name','$email','$phone','$password','$address')";
+                    echo $sql;
             if (!mysqli_query($con,$sql))
             {
                 die('Error: ' . mysqli_error($con));
             }
             header("Location:index.php");
         }
-    
-    }
+    }  
 ?>
 
-<form action="signup.php" method="post" class="form-horizontal" role="form">
+<form action="signup.php" method="post" class="form-horizontal" role="form" onsubmit="return validateForm()">
     <div class="row form-group">
-        <div class="col-md-6">
-            <input type="fname" class="form-control" name="fname" id="fname" placeholder="First Name" required>
-            <!-- <label><?php echo $nameErr;?></label> -->
-        </div>
-        <div class="col-md-6">
-            <input type="lname" class="form-control" name="lname" id="lname" placeholder="Last Name" required>
+        <div class="col-md-12">
+            <input type="name" class="form-control" name="name" id="name" placeholder="Full Name" required>
             <!-- <label><?php echo $nameErr;?></label> -->
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-12">
-            <input type="email" class="form-control" id="email" placeholder="Email" required>
+            <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
             <!-- <label><?php echo $emailErr;?></label> -->
         </div>
     </div>

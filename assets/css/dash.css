@@ -33,6 +33,7 @@
 #page-content-wrapper {
     width: 100%;
     padding: 15px;
+    min-height:580px;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -147,30 +148,12 @@ ul.alert-dropdown {
         margin-right: 0;
     }
 }
-.footer {
-  position: absolute;
-  padding-left: 190px;
-  bottom: 20px;
-  width: 100%;
-  text-align: center;
-  /* Set the fixed height of the footer here */
-  /*height: 70px;*/
+.footer{
+    background-color: #ececec;
+    min-width: 100%;
 }
-
 /* Tables Styles */
 .table-responsive{
     padding-top: 20px;
     padding-bottom: 20px;
-}
-
-.toggler{
-    z-index: 1000;
-    position: absolute;
-    bottom:0px;
-    left:50px;
-}
-.new_complaint{
-    padding-top: 20px;
-    text-align: center;
-    width: auto;
 }

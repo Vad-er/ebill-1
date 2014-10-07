@@ -106,7 +106,8 @@ i {
 
 #headerwrap {
     background-color: #0e175b;
-    padding-top: 90px;
+    padding-top: 70px;
+    padding-bottom: 0px;
     background-attachment: relative;
     background-position: center center;
     min-height: 650px;
@@ -124,8 +125,8 @@ i {
 }
 .darkhearderwrap{
     background-color: rgba(0,0,0,.27);
-    margin-top: -30px;
-    padding-top: 80px;
+    margin-top: -50px;
+    padding-top: 100px;
     padding-bottom: 3.2%;
 }
 #headerwrap h1 {

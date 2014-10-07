@@ -61,7 +61,7 @@ if(isset($_SESSION['logged']))
                 <a class="navbar-brand" href="#"><i class="fa fa-bolt"></i><b>Bolt</b></a>
             </div>
             <div class="navbar-collapse collapse">
-                <?php require_once("login.php"); ?>
+                <?php include("login.php"); ?>
             </div>
             <!--/.nav-collapse -->
         </div>
@@ -78,7 +78,7 @@ if(isset($_SESSION['logged']))
                     <!-- /col-lg-6 -->
                     <div class="col-lg-6">
                         <h1>Sign Up</h1>
-                        <?php require_once("signup.php"); ?>
+                        <?php include("signup.php"); ?>
                     </div>
                     <!-- /col-lg-6 -->
 
@@ -178,6 +178,17 @@ if(isset($_SESSION['logged']))
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- jQuery Version 1.11.0 -->
     <script src="../assets/js/jquery-1.11.0.js"></script>
+    <script>
+    function validateForm() {
+        var x = document.forms["myForm"]["email"].value;
+        var atpos = x.indexOf("@");
+        var dotpos = x.lastIndexOf(".");
+        if (atpos< 1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+            alert("Not a valid e-mail address");
+            return false;
+        }
+    }
+    </script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../assets/js/bootstrap.min.js"></script>

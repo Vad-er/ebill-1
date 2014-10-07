@@ -13,8 +13,5 @@ NO PHP LEAKS BACK TO THE INDEX
     <div class="form-group">
         <input type="password" placeholder="Password" name="pass" class="form-control">
     </div>
-    <div class="btn-group  btn-group-sm">
-        <button type="submit" class="btn btn-success">Sign in</button>
-        <button type="button" class="btn">Forgot Password</button>
-    </div>
+    <button type="submit" class="btn btn-success">Sign in</button>
 </form>

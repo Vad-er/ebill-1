@@ -30,17 +30,8 @@
             $password = mysqli_real_escape_string($con,$password);
             
             //DB HAS 2 TABLES ADMIN AND USER BOTH HAVING THEIR OWN ATTRIBUTES
-            //EMAIL AND PASSWORD 
-            $sql = "SELECT * FROM admin WHERE email='$email' AND pass='$password' ";
-            $result = mysqli_query($con,$sql);
-            $count = mysqli_num_rows($result);
-            if ($count == 1) {
-                $_SESSION['logged']=true;
-                $_SESSION['email'] = $email;
-                $_SESSION['account']="admin";
-                header("Location:admin/index.php");
-            }
-
+            //EMAIL AND PASSWORD      
+            // user       
             $sql = "SELECT * FROM user WHERE email='$email' AND pass='$password' ";
             $result = mysqli_query($con,$sql);
             $count = mysqli_num_rows($result);
@@ -52,7 +43,20 @@
                 $_SESSION['email'] = $email;
                 $_SESSION['account']="user";
                 header("Location:user/index.php");
-            }            
+            }  
+            // admin
+            $sql = "SELECT * FROM admin WHERE email='$email' AND pass='$password' ";
+            $result = mysqli_query($con,$sql);
+            $count = mysqli_num_rows($result);
+            if ($count == 1) {
+                $row=mysqli_fetch_array($result,MYSQLI_ASSOC);
+                $_SESSION['logged']=true;
+                $_SESSION['email'] = $email;
+                $_SESSION['aid']=$row['id'];
+                $_SESSION['account']="admin";
+                header("Location:admin/index.php");
+            }
+
         }
     }
 ?>
