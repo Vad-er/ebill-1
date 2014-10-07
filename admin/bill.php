@@ -1,4 +1,9 @@
-<?php require_once('head_html.php'); ?>
+<?php 
+    require_once('head_html.php'); 
+    require_once('../Includes/config.php'); 
+    require_once('../Includes/session.php'); 
+    require_once('../Includes/user.php'); 
+?>
 
 <body>
 
@@ -48,26 +53,73 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td height="40">1</td>
-                                                <td>Ameen Khan</td>
-                                                <td>1-9-2014</td>
-                                                <td>700</td>
-                                                <td>14000</td>
-                                                <td>1-10-2014</td>
-                                                <td>PROCESSED</td>
-                                            </tr>
+                                        <?php 
+                                            include('../Includes/admin.php');
+                                            $result = retrieve_bills_generated($_SESSION['aid']);
+
+                                            // Initialising #
+                                            $counter = 1;
+                                            while($row = mysqli_fetch_assoc($result)){
+                                            ?>
+                                                <tr>
+                                                    <td height="40"><?php echo $counter ?></td>
+                                                    <td><?php echo $row['user'] ?></td>
+                                                    <td><?php echo $row['bdate'] ?></td>
+                                                    <td><?php echo $row['units'] ?></td>
+                                                    <td><?php echo $row['amount'] ?></td>
+                                                    <td><?php echo $row['ddate'] ?></td>
+                                                    <td><?php echo $row['status'] ?></td>
+                                                </tr>
+                                            <?php 
+                                                $counter=$counter+1;
+                                            }
+                                            ?>
                                         </tbody>
+                                        
                                     </table>
 
                                 </div>
                             </div>
+
                             <div class="tab-pane fade" id="generate">
                                 <!-- <h4>{User} due bill info goes here and each linked to a transaction form </h4> -->
                                 <!-- create a clickable list of USERS leading to a modal form to fill up units -->
+                                                                <div class="table-responsive">
+                                    <table class="table table-hover table-striped table-bordered table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>USER</th>
+                                                <th>UNITS</th>
+                                                <th>BILL DATE</th>
+                                                <th>DUE DATE</th>
+                                                <th>GENERATE</th>    
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <td>1</td>
+                                            <td>AMEEN KHAN</td>
+                                            <form action="">
+                                            <td>                                                
+                                                <input type="number" name="units" placeholder="ENTER UNITS">
+                                            </td>
+                                            <td>1-9-2014</td>
+                                            <td>1-10-2014</td>
+                                            <td>
+                                                <button type="submit" class="btn btn-success">GENERATE BILL  </button>
+                                            </td>
+                                            </form>
+                                        </tbody>
+                                        
+                                    </table>
+
+                                </div>
+
+
+
                             </div>
-                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle DASH</a>
                         </div>
+                        <!-- /.tab-content -->
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>

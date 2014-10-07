@@ -47,8 +47,10 @@
                                                 <td>1-9-2014</td>
                                                 <td>Transaction not confirmed</td>
                                                 <td>
-                                                    <button type="submit" class="btn btn-success">Process</button>
-                                                    <!-- when clicked change the db value from not processed to processed -->
+                                                    <form action="">
+                                                        <button type="submit" class="btn btn-success">Process</button>
+                                                        <!-- when clicked change the db value from not processed to processed -->
+                                                    </form>                                                    
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -60,7 +62,6 @@
                                 <h4>New complaint Form</h4>
                                 <!-- search db where id is his and status due -->
                             </div>
-                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle DASH</a>
                         </div>
                     </div>
                     <!-- /.row -->
