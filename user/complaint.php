@@ -73,8 +73,16 @@
                                                     <!-- Textarea -->
                                                     <div class="row form-group complaint_textarea">
                                                         <!-- <label class="control-label" for="complaint">Complaint</label> -->
-                                                        <textarea class="form-control" id="complaint" name="complaint" placeholder="Complaint Goes here"></textarea>
+                                                        <!-- <textarea class="form-control" id="complaint" name="complaint" placeholder="Complaint Goes here"></textarea> -->
+                                                        <select  class="form-control" id="complaint" name="complaint">
+                                                            <option value="">Select your grivance</option>
+                                                            <option value="Bill Not Correct">Bill Not Correct</option>
+                                                            <option value="Bill Generated Late">Bill Generated Late</option>
+                                                            <option value="Transaction Not Processed">Transaction Not Processed</option>
+                                                            <option value="Previous Complaint Not Processed">Previous Complaint Not Processed</option>
+                                                        </select>
                                                     </div>
+                                                    
                                                 <button id="submit" name="submit" class="btn btn-primary">Submit</button>
                                             </form>
                                             </div>
