@@ -15,9 +15,7 @@ function test_input($data) {
         $data = htmlspecialchars($data);
         return $data;
     }
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") 
-    {   
+if(isset($_POST["reg_submit"])) {
         $email = test_input($_POST['email']); 
         $password = test_input($_POST["inputPassword"]);
         $confpassword = test_input($_POST["confirmPassword"]);
@@ -28,12 +26,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         if (empty($_POST["name"])) {
             $nameErr = "Name is required";
             $flag=1;
+            echo $nameErr;
         } else {
             $name = test_input($_POST["name"]);
             // check if name only contains letters and whitespace
             if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
                 $nameErr = "Only letters and white space allowed"; 
                 $flag=1;
+                echo $nameErr;
             }
         }
 
@@ -47,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 $emailErr = "Invalid email format"; 
                 $flag=1;
+                echo $emailErr;
             }
         }
 
@@ -54,12 +55,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         if (empty($_POST["address"])) {
             $nameErr = "Address is required";
             $flag=1;
+            echo $nameErr;
         } else {
             $address = test_input($_POST["address"]);
             // check if address only contains letters and whitespace
             if (!preg_match("/^[a-zA-Z1-9]*$/",$address)) {
                 $nameErr = "Only letters, numbers and white space allowed";
                 $flag=1; 
+                echo $nameErr;
             }
         }
 
@@ -67,11 +70,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         if (empty($_POST["contactNo"])) {
             $flag=1;
             $contactNo = "";
+            echo "error here";
         } else {
             $contactNo = test_input($_POST["contactNo"]);
             if(!preg_match("/^d{10}$/", $_POST["contactNo"])){
                 $phoneErr="10 digit phone no allowed.";
-                $flag=1;
+                // $flag=1;
+                echo "or here";
+                echo $_POST['contactNo'];
             }
         }
 
@@ -79,12 +85,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         // TODO
 
 
-        // Only if succeed from the validation thourough put   
+        // Only if succeed from the validation thourough put  
+        echo $flag; 
         if($flag == 0)
         {
-            include("Includes/config.php");
+            require_once("Includes/config.php");
             $sql = "INSERT INTO user (`name`,`email`,`phone`,`pass`,`address`)
-                    VALUES('$name','$email','$phone','$password','$address')";
+                    VALUES('$name','$email','$contactNo','$password','$address')";
                     echo $sql;
             if (!mysqli_query($con,$sql))
             {
@@ -92,7 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
             }
             header("Location:index.php");
         }
-    }  
+    }
 ?>
 
 <form action="signup.php" method="post" class="form-horizontal" role="form" onsubmit="return validateForm()">
@@ -134,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     </div>
     <div class="form-group">
         <div class="col-md-10">
-            <button type="submit" class="btn btn-primary">Register</button>
+            <button type="submit" name="reg_submit" class="btn btn-primary">Register</button>
         </div>
     </div>
 

@@ -14,6 +14,14 @@ if(isset($_SESSION['logged']))
             }
     }    
 }
+
+if(isset($_POST['login_submit'])) {
+    if(!(isset($_POST['email']))) {
+        if(!(isset($_POST['pass']))) {
+            location('index.php');    
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +45,7 @@ if(isset($_SESSION['logged']))
     <link href="assets/css/main.css" rel="stylesheet">
 
     <!-- Fonts from Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+    <!-- <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'> -->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
