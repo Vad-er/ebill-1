@@ -60,7 +60,7 @@
                                 </div>
                                 <!-- /.table-responsive -->
 
-                                <!-- New colpalin Modal -->
+                                <!-- New complain Modal -->
                                 <div class="modal fade" id="Complaint" tabindex="-1" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -74,8 +74,8 @@
                                                     <div class="row form-group complaint_textarea">
                                                         <!-- <label class="control-label" for="complaint">Complaint</label> -->
                                                         <!-- <textarea class="form-control" id="complaint" name="complaint" placeholder="Complaint Goes here"></textarea> -->
-                                                        <select  class="form-control" id="complaint" name="complaint">
-                                                            <option value="">Select your grivance</option>
+                                                        <select  class="form-control" id="complaint" name="complaint" placeholder="select your grievance">
+                                                            <!-- <option value="">Select your grivance</option> -->
                                                             <option value="Bill Not Correct">Bill Not Correct</option>
                                                             <option value="Bill Generated Late">Bill Generated Late</option>
                                                             <option value="Transaction Not Processed">Transaction Not Processed</option>
