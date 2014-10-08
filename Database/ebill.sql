@@ -166,15 +166,54 @@ INSERT INTO complaint(uid,aid,complaint,status) VALUES
 
 DROP TABLE IF EXISTS `unitsRate`;
 CREATE TABLE IF NOT EXISTS `unitsRate` (
-  `200` int(14) NOT NULL,
-  `500` int(14) NOT NULL,
-  `1000` int(14) NOT NULL
+  `sno` int(1),
+  `twohundred` int(14) NOT NULL,
+  `fivehundred` int(14) NOT NULL,
+  `thousand` int(14) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `unitsRate`
 --
-INSERT INTO unitsRate VALUES(2,5,10);
+INSERT INTO unitsRate VALUES(1,2,5,10);
+
+--
+-- Dumping data for table `unitsRate`
+--
+
+-- STORED PROCEDURE TO MULTIPLY UNITS * RATE TO GET AMOUNT
+
+delimiter //
+DROP PROCEDURE IF EXISTS `unitstoamount`;
+
+CREATE PROCEDURE unitstoamount( IN units INT(14) , OUT result INT(14))
+BEGIN
+   
+    DECLARE a INT(14) DEFAULT 0;
+    DECLARE b INT(14) DEFAULT 0;
+    DECLARE c INT(14) DEFAULT 0;
+
+    SELECT twohundred FROM unitsRate INTO a ;
+    SELECT fivehundred FROM unitsRate INTO b ;
+    SELECT thousand FROM unitsRate INTO c  ;
+
+    IF units<200
+    then
+        SELECT a*units INTO result;
+    
+    ELSEIF units<500
+    then
+        SELECT (a*200)+(b*(units-200)) INTO result;
+    ELSEIF units > 500
+    then
+        SELECT (a*200)+(b*(300))+(c*(units-500)) INTO result;
+    END IF;
+
+END
+//
+delimiter ;
+-- CALL UNITSTOAMOUNT BY : CALL unitstoamount(700,@x)// 
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
