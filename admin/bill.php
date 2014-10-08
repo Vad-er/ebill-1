@@ -84,7 +84,7 @@
                             <div class="tab-pane fade" id="generate">
                                 <!-- <h4>{User} due bill info goes here and each linked to a transaction form </h4> -->
                                 <!-- create a clickable list of USERS leading to a modal form to fill up units -->
-                                                                <div class="table-responsive">
+                                <div class="table-responsive">
                                     <table class="table table-hover table-striped table-bordered table-condensed">
                                         <thead>
                                             <tr>
@@ -97,18 +97,43 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <td>1</td>
-                                            <td>AMEEN KHAN</td>
-                                            <form action="">
-                                            <td>                                                
-                                                <input type="number" name="units" placeholder="ENTER UNITS">
-                                            </td>
-                                            <td>1-9-2014</td>
-                                            <td>1-10-2014</td>
-                                            <td>
-                                                <button type="submit" class="btn btn-success">GENERATE BILL  </button>
-                                            </td>
-                                            </form>
+                                        <?php 
+                                            $result = retrieve_bill_data();
+                                            // Initialising #
+                                            $counter = 1;
+                                            echo $row['bdate'];
+                                            while($row = mysqli_fetch_assoc($result)){
+                                            ?>
+                                                <tr>
+                                                    <form action="generate_bill.php" method="post">
+                                                        <td height="40"><?php echo $counter ?></td>
+
+                                                        <input type="hidden" name="uid" value=<?php echo $row['uid'] ?> >
+                                                        <input type="hidden" name="uname" value=<?php echo $row['uname'] ?> >
+                                                        
+                                                        <td>
+                                                            <?php echo $row['uname'] ?>
+                                                        </td>
+                                                        <td>                                                
+                                                            <input type="tel" name="units" placeholder="ENTER UNITS">
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $row['bdate'] ?> 
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $row['ddate'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <button type="submit" name="generate_bill" class="btn btn-success">GENERATE BILL  </button>
+                                                        </td>
+                                                        
+                                                        
+                                                    </form>
+                                                </tr>
+                                            <?php
+                                            $counter = $counter +1;
+                                            }
+                                            ?>
                                         </tbody>
                                         
                                     </table>
