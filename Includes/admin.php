@@ -1,6 +1,5 @@
 <?php 
 
-
     function retrieve_bills_generated($id) {
         include("config.php");
         $query  = "SELECT user.name AS user, bill.bdate AS bdate , bill.units AS units , bill.amount AS amount ";

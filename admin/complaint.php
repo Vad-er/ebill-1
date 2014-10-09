@@ -27,7 +27,7 @@
                         </div><!-- /.col-lg-12 -->
                     </div><!-- /.row -->
                     
-                            <div class="table-responsive">
+                            <div class="table-responsive" style="padding-top: 0">
                                 <table class="table table-hover table-striped table-bordered table-condensed">
                                     <thead>
                                         <tr>
@@ -35,6 +35,7 @@
                                             <th>User</th>
                                             <th>COMPLAINT</th>
                                             <th>STATUS</th>
+                                            <th>Process</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -51,6 +52,13 @@
                                                     <td><?php echo $row['uname'] ?></td>
                                                     <td><?php echo $row['complaint'] ?></td>
                                                     <td><?php echo $row['status'] ?></td>
+                                                    <td width="70">
+                                                    <form action="process_complaint.php" method="post">
+                                                        <input type="hidden" name="cid" value=<?php echo $row['id'] ?> >
+                                                        <button type="submit" name="complaint_process" class="btn btn-success form-control">PROCESS COMPLAINT  </button>
+                                                    </form>
+                                                        
+                                                    </td>
                                                 </tr>
                                             <?php 
                                                 $counter=$counter+1;
