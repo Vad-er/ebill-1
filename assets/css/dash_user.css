@@ -1,3 +1,20 @@
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 500;
+}
+
 #wrapper {
     padding-left: 10px;
     padding-top: 5px;
@@ -158,4 +175,21 @@ ul.alert-dropdown {
 .table-responsive{
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+/*FOOTER*/
+
+footer {
+    color: #000;
+    position: absolute;
+    bottom: 0;
+    padding-left: 0px;
+    width: 100%;
+}
+
+footer .footer-below {
+    padding: 20px 0px;
+    padding-left: 50px;
+    /*background-color: #233140;*/
+    background-color: #efefef;
 }
