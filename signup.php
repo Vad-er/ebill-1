@@ -51,19 +51,48 @@ if(isset($_POST["reg_submit"])) {
             }
         }
 
+        // PASSWORD VALIDATION
+        if (empty($_POST["inputPassword"])) 
+        {
+            $passwordErr = "PASSWORD missing";
+            $flag=1;
+        }
+        else 
+        {
+            $password = $_POST["inputPassword"];
+        }
+        // CONFIRM PASSWORD
+        if (empty($_POST["confirmPassword"])) 
+        {
+            $confpasswordErr = "missing";
+            $flag=1;
+        }
+        else 
+        {
+            if($_POST['confirmPassword'] == $password)
+            {
+                $confpassword = $_POST["confirmPassword"];
+            }
+            else
+            {
+                $confpasswordErr = "Not same as password!";
+                $flag = 1;
+            }
+        }
+
         // ADDRESS VALIDATION
         if (empty($_POST["address"])) {
-            $nameErr = "Address is required";
+            $addrErr = "Address is required";
             $flag=1;
-            echo $nameErr;
+            echo $addrErr;
         } else {
             $address = test_input($_POST["address"]);
             // check if address only contains letters and whitespace
-            if (!preg_match("/^[a-zA-Z1-9]*$/",$address)) {
-                $nameErr = "Only letters, numbers and white space allowed";
-                $flag=1; 
-                echo $nameErr;
-            }
+            // if (!preg_match("/^[a-zA-Z1-9]*$/",$address)) {
+            //     $addrErr = "Only letters, numbers and white space allowed";
+            //     // $flag=1; 
+            //     echo $addrErr;
+            // }
         }
 
         //CONTACT VALIDATION
