@@ -5,7 +5,7 @@
 
     $aid = $_SESSION['aid'];
     //set dafaulted variables
-    $result = retrieve_dates();
+    $result = retrieve_bill_data();
     $row = mysqli_fetch_assoc($result);
     
     $bdate = $row['bdate'];

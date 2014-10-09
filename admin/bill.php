@@ -115,7 +115,7 @@
                                                             <?php echo $row['uname'] ?>
                                                         </td>
                                                         <td>                                                
-                                                            <input type="tel" name="units" placeholder="ENTER UNITS">
+                                                            <input class="form-control" type="tel" name="units" placeholder="ENTER UNITS">
                                                         </td>
                                                         <td>
                                                             <?php echo $row['bdate'] ?> 

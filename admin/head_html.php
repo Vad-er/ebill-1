@@ -15,14 +15,11 @@
     <link href="../assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="../assets/css/dash.css" rel="stylesheet">
+    <link href="../assets/css/dash_admin.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="../assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Fonts from Google Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
-
+    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

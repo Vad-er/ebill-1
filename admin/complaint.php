@@ -20,53 +20,47 @@
                         <h1 class="page-header">
                             Complaint
                         </h1>
-                        <!-- Pills Tabbed UNPROCESSED BILLS | NEW -->
-                        <ul class="nav nav-pills nav-justified">
-                            <li class="active"><a href="#unprocessed" data-toggle="pill">UNPROCESSED BILLS</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane fade in active" id="unprocessed">
-                                <!-- <h4>{User} complaint UNPROCESSED BILLS goes here</h4> -->
-                                <!-- DB RETRIEVAL search db where id is his and status is processed/pending -->
-                                <div class="table-responsive">
-                                    <table class="table table-hover table-striped table-bordered table-condensed">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>User</th>
-                                                <th>Complaint Date</th>
-                                                <th>Wrong bill</th>
-                                                <th>PROCESS</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td height="40">1</td>
-                                                <td>Ameen Khan</td>
-                                                <td>1-9-2014</td>
-                                                <td>Transaction not confirmed</td>
-                                                <td>
-                                                    <form action="">
-                                                        <button type="submit" class="btn btn-success">Process</button>
-                                                        <!-- when clicked change the db value from not processed to processed -->
-                                                    </form>                                                    
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- /.table-responsive -->
+                        <ol class="breadcrumb">
+                          <li>Complaint</li>
+                          <li class="active">History</li>
+                        </ol>
+                        </div><!-- /.col-lg-12 -->
+                    </div><!-- /.row -->
+                    
+                            <div class="table-responsive">
+                                <table class="table table-hover table-striped table-bordered table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>User</th>
+                                            <th>COMPLAINT</th>
+                                            <th>STATUS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                            include('../Includes/admin.php');
+                                            $result = retrieve_complaints_history($_SESSION['aid']);
+
+                                            // Initialising #
+                                            $counter = 1;
+                                            while($row = mysqli_fetch_assoc($result)){
+                                            ?>
+                                                <tr>
+                                                    <td height="40"><?php echo $counter ?></td>
+                                                    <td><?php echo $row['uname'] ?></td>
+                                                    <td><?php echo $row['complaint'] ?></td>
+                                                    <td><?php echo $row['status'] ?></td>
+                                                </tr>
+                                            <?php 
+                                                $counter=$counter+1;
+                                            }
+                                        ?>
+                                    </tbody>
+                                </table>
                             </div>
-                            <div class="tab-pane fade" id="new">
-                                <h4>New complaint Form</h4>
-                                <!-- search db where id is his and status due -->
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.row -->
+                            <!-- /.table-responsive -->
+
             </div>
             <!-- /.container-fluid -->
 
