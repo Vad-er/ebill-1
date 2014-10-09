@@ -19,7 +19,7 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Dashboard
-                            <small>{Admin} Overview</small>
+                            <small> Overview</small>
                             <!-- Like bills processed by the admin ; bills generated , unprocessed complaint
                             maybe a stats infograph -->
                         </h1>
