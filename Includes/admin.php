@@ -19,6 +19,9 @@
         $query = "SELECT curdate() AS bdate , adddate( curdate(),INTERVAL 30 DAY ) AS ddate , user.id AS uid , user.name AS uname FROM user";
         // echo $query;
         $result = mysqli_query($con,$query);
+        if($result === FALSE) {
+            die(mysql_error()); // TODO: better error handling
+        }
         return $result;
     }
 

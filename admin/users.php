@@ -23,6 +23,23 @@
                             <!-- Like bills processed by the admin ; bills generated , unprocessed complaint
                             maybe a stats infograph -->
                         </h1>
+                        <div class="table-responsive" style="padding-top: 0">
+                                <table class="table table-hover table-striped table-bordered table-condensed">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>User Name</th>
+                                            <th>EMAIL</th>
+                                            <th>PHONE NO</th>
+                                            <th>ADDRESS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
                     </div>
                 </div>
                 <!-- /.row -->

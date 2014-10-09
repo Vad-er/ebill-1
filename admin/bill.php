@@ -124,7 +124,7 @@
                                                             <?php echo $row['ddate'] ?>
                                                         </td>
                                                         <td>
-                                                            <button type="submit" name="generate_bill" class="btn btn-success">GENERATE BILL  </button>
+                                                            <button type="submit" name="generate_bill" class="btn btn-success form-control">GENERATE BILL  </button>
                                                         </td>
                                                         
                                                         
