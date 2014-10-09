@@ -40,5 +40,17 @@
         return $result;
 
     }
+
+    function retrieve_users_detail()
+    {
+        include("config.php");
+        $query  = "SELECT * FROM user";
+        $result = mysqli_query($con,$query);
+        if($result === FALSE) {
+            die(mysql_error()); // TODO: better error handling
+        }
+        return $result;
+
+    }
  ?>
     

@@ -23,6 +23,10 @@
                             <!-- Like bills processed by the admin ; bills generated , unprocessed complaint
                             maybe a stats infograph -->
                         </h1>
+                        <ol class="breadcrumb">
+                          <li>User</li>
+                          <li class="active">Details</li>
+                        </ol>
                         <div class="table-responsive" style="padding-top: 0">
                                 <table class="table table-hover table-striped table-bordered table-condensed">
                                     <thead>
@@ -35,9 +39,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                        </tr>
-                                        
+                                     <?php 
+                                            include('../Includes/admin.php');
+                                            $result = retrieve_users_detail($_SESSION['aid']);
+
+                                            // Initialising #
+                                            $counter = 1;
+                                            while($row = mysqli_fetch_assoc($result)){
+                                            ?>
+                                                <tr>
+                                                    <td height="40"><?php echo $counter ?></td>
+                                                    <td><?php echo $row['name'] ?></td>
+                                                    <td><?php echo $row['email'] ?></td>
+                                                    <td><?php echo $row['phone'] ?></td>
+                                                    <td><?php echo $row['address'] ?></td>                                                    
+                                                </tr>
+                                            <?php 
+                                                $counter=$counter+1;
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                     </div>
