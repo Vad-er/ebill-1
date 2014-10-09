@@ -17,10 +17,26 @@
 
     function retrieve_bill_data(){
         include("config.php");
-        $query = "SELECT curdate() as bdate , adddate( curdate(),INTERVAL 30 DAY ) as ddate , user.id AS uid , user.name AS uname FROM user";
+        $query = "SELECT curdate() AS bdate , adddate( curdate(),INTERVAL 30 DAY ) AS ddate , user.id AS uid , user.name AS uname FROM user";
         // echo $query;
         $result = mysqli_query($con,$query);
         return $result;
+    }
+
+    function retrieve_complaints_history($id)
+    {
+        include("config.php");
+        $query  = "SELECT complaint.id AS id , complaint.complaint AS complaint , complaint.status AS status , user.name AS uname ";
+        $query .= "FROM user , complaint ";
+        $query  .= "WHERE complaint.uid=user.id AND status='NOT PROCESSED' AND complaint.aid={$id} ";
+        $query  .= "ORDER BY complaint.id desc  ";
+        $result = mysqli_query($con,$query);
+        if($result === FALSE) {
+            die(mysql_error()); // TODO: better error handling
+        }
+
+        return $result;
+
     }
  ?>
     
