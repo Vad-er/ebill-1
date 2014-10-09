@@ -26,8 +26,57 @@
                     </div>
                 </div>
                 <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
+                <div class="row">
+                    <div class="col-lg-3 col-xs-6">
+                        <div class="panel panel-bolt">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-rupee fa-3x"></i>
+                                    </div>
+                                    <div class="col-md-9 text-right">
+                                        <div class="huge"><b></b>26</div>
+                                        <div>USER LATE!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left"><b>ADD DUES</b></span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right fa-2x"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div><!-- ./panel-closes -->
+
+                    <div class="col-lg-3 col-xs-6">
+                        <div class="panel panel-bolt2">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-bullhorn fa-3x"></i>
+                                    </div>
+                                    <div class="col-md-9 text-right">
+                                        <div class="huge"><b></b>26</div>
+                                        <div>USER DEFAULTING!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left"><b>REMOVE USER(s)</b></span>
+                                    <span class="pull-right"><i class="fa fa-trash fa-2x"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div> <!-- ./panel-closes -->
+                </div><!-- ./row -->
+
+                <hr />
+
+            </div><!-- /.container-fluid -->
 
         </div>
         <!-- /#page-content-wrapper -->

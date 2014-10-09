@@ -32,6 +32,7 @@ h6 {
 }
 
 #sidebar-wrapper {
+    margin-top: 20px;
     z-index: 1000;
     position: fixed;
     left: 250px;
@@ -45,6 +46,7 @@ h6 {
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
+
 
 #wrapper.toggled #sidebar-wrapper {
     width: 230px;
@@ -66,9 +68,9 @@ h6 {
 }
 .navbar-brand{
     font-family: 'Lato', sans-serif;
-    font-size: 20px;
-    padding-left: 10px;
-    margin-left: 80px;
+    font-size: 25px;
+    margin-left: 50px;
+    color: #cccccc;
 }
 .top-nav {
     padding: 0 20px;
@@ -78,7 +80,7 @@ h6 {
     padding-top: 15px;
     padding-bottom: 15px;
     line-height: 20px;
-    color: #999;
+    color: #ccc;
 }
 .top-nav>li>a:hover, 
 .top-nav>li>a:focus, 
@@ -118,14 +120,14 @@ ul.alert-dropdown {
     padding-bottom: 25px;
     line-height: 70px;
     font-family: 'Lato', sans-serif;
-    font-size: 17px;
+    font-size: 20px;
 }
 
 .sidebar-nav li a {
     padding-left: 18px;
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: #cccccc;
 }
 
 .sidebar-nav li a:hover {
@@ -195,4 +197,44 @@ footer .footer-below {
     padding-left: 50px;
     /*background-color: #233140;*/
     background-color: #efefef;
+}
+
+/*PANEL DESIGN*/
+
+/*1*/
+.panel-bolt {
+    border-color: #1e1e44;
+}
+
+.panel-bolt .panel-heading {
+    border-color: #1e1e44;
+    color: #fff;
+    background-color: #1e1e44;
+}
+
+.panel-bolt a {
+    color: #39394b;
+}
+
+.panel-bolt a:hover {
+    color: #0e0e16;
+}
+
+/*2*/
+.panel-bolt2 {
+    border-color: #161632;
+}
+
+.panel-bolt2 .panel-heading {
+    border-color: #161632;
+    color: #fff;
+    background-color: #161632;
+}
+
+.panel-bolt2 a {
+    color: #39394b;
+}
+
+.panel-bolt2 a:hover {
+    color: #0e0e16;
 }
