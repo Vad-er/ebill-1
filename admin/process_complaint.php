@@ -5,7 +5,7 @@
     echo "$cid";
     if (isset($_POST["complaint_process"])) {
         if(isset($_POST["cid"])) {
-            $query = "UPDATE complaint SET status='Processed' WHERE id={$cid}";
+            $query = "UPDATE complaint SET status='PROCESSED' WHERE id={$cid}";
             // echo $query;
             $result = mysqli_query($con,$query);
             if($result === FALSE) {

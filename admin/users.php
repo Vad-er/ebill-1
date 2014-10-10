@@ -1,4 +1,9 @@
-<?php require_once('head_html.php'); ?>
+<?php 
+    require_once('head_html.php'); 
+    require_once('../Includes/config.php'); 
+    require_once('../Includes/session.php'); 
+    require_once('../Includes/admin.php'); 
+?>
 
 <body>
 
@@ -40,7 +45,7 @@
                                     </thead>
                                     <tbody>
                                      <?php 
-                                            include('../Includes/admin.php');
+                                            // include('../Includes/admin.php');
                                             $result = retrieve_users_detail($_SESSION['aid']);
 
                                             // Initialising #
@@ -60,10 +65,13 @@
                                         ?>
                                     </tbody>
                                 </table>
-                    </div>
-                </div>
-                <!-- /.row -->
-                
+                        </div>
+                        <!-- ./table -rsponsive -->
+                        
+                    </div><!-- ./col -->
+
+                </div> <!-- /.row -->
+
             </div><!-- /.container-fluid -->
 
         </div>

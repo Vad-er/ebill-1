@@ -1,4 +1,9 @@
-<?php require_once('head_html.php'); ?>
+<?php 
+    require_once('head_html.php'); 
+    require_once('../Includes/config.php'); 
+    require_once('../Includes/session.php'); 
+    require_once('../Includes/admin.php'); 
+?>
 
 <body>
 
@@ -26,6 +31,8 @@
                     </div>
                 </div>
                 <!-- /.row -->
+                <?php 
+                 ?>
                 <div class="row">
                     <div class="col-lg-3 col-xs-6">
                         <div class="panel panel-bolt">
@@ -74,10 +81,67 @@
                     </div> <!-- ./panel-closes -->
                 </div><!-- ./row -->
 
+                <h1 style="padding-left:30px; "><small>Stats</small></h1>
+                <div class="row" style="margin-top: 20px;">
+                    <div class=".col-lg-3 col-xs-8">
+                    <?php 
+
+                        list($result1,$result2,$result3) = retrieve_admin_stats($_SESSION['aid']);
+                        $row1 = mysqli_fetch_row($result1);
+                        $row2 = mysqli_fetch_row($result2);
+                        $row3 = mysqli_fetch_row($result3);
+                     ?>
+                        <table class="table  ">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h4>Number of Bills | Generated</h4>
+                                    </td>
+                                    <td class="success">
+                                    <h4>
+                                        <?php 
+                                            echo $row2[0];
+                                        ?>
+                                    </h4>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <h4>Number of Bills | Unprocessed</h4>
+                                    </td>
+                                    <td class="success">
+                                        <h4>
+                                            <?php 
+                                                echo $row1[0];
+                                            ?>
+                                        </h4>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <h4>Number of Complaints | Unprocessed</h4>
+                                    </td>
+                                    <td class="success">
+                                        <h4>
+                                            <?php 
+                                                echo $row3[0];
+                                            ?>
+                                        </h4>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> <!-- ./col-md-12 -->
+
+                </div><!-- ./row -->
+
+                
                 <hr />
 
             </div><!-- /.container-fluid -->
-
         </div>
         <!-- /#page-content-wrapper -->
 

@@ -2,7 +2,7 @@
     require_once('head_html.php'); 
     require_once('../Includes/config.php'); 
     require_once('../Includes/session.php'); 
-    require_once('../Includes/user.php'); 
+    require_once('../Includes/admin.php'); 
 ?>
 
 <body>
@@ -53,10 +53,8 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php 
-                                            include('../Includes/admin.php');
+                                        <?php
                                             $result = retrieve_bills_generated($_SESSION['aid']);
-
                                             // Initialising #
                                             $counter = 1;
                                             while($row = mysqli_fetch_assoc($result)){
