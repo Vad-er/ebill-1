@@ -82,8 +82,32 @@
 
     function retrieve_users_defaulting($id){
         include("config.php");
-        $query1  = " SELECT count(id) AS unprocessed_bills FROM bill  WHERE status = 'PENDING'  AND aid = {$id} ";
-        $query2  = " SELECT count(id) AS generated_bills FROM bill  WHERE aid = {$id} " ;
+
+        //TODO : adjust for transaction .payable!!!!!!! 
+        // AND bill.id=transaction.bid AND transaction.payable=bill.amount
+        
+        //query for late
+        $query1  = "SELECT COUNT(*) FROM bill ";
+        $query1 .= "WHERE curdate() > bill.ddate AND curdate() < adddate(bill.ddate , INTERVAL 20 DAY ) ";
+        $query1 .= "AND bill.aid={$id} AND bill.status='PENDING' ";
+
+        //query for defaulting
+        $query2  = "SELECT COUNT(*) FROM bill ";
+        $query2 .= "WHERE curdate() > adddate(bill.ddate , INTERVAL 20 DAY ) ";
+        $query2 .= "AND bill.aid={$id} AND bill.status='PENDING' ";
+
+        $result1 = mysqli_query($con,$query1);
+        if($result1 === FALSE) {
+            echo "FAILED1";
+            die(mysql_error()); // TODO: better error handling
+        }
+
+        $result2 = mysqli_query($con,$query2);
+        if($result2 === FALSE) {
+            echo "FAILED2";
+            die(mysql_error()); // TODO: better error handling
+        }
+        return array($result1,$result2,);
     }
 
  ?>
