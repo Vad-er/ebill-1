@@ -5,6 +5,7 @@
     require_once('../Includes/admin.php'); 
 ?>
 
+
 <body>
 
     <div id="wrapper">
@@ -39,6 +40,7 @@
                             <div class="tab-pane fade in active" id="generated">
                                 <!-- <h4>{User} Bills(ALL UP TO DATE) goes here{Table form}</h4> -->
                                 <!-- DB RETRIEVAL search db where id is his and status is processed -->
+                                
                                 <div class="table-responsive">
                                     <table class="table table-hover table-striped table-bordered table-condensed">
                                         <thead>
@@ -82,65 +84,29 @@
                             <div class="tab-pane fade" id="generate">
                                 <!-- <h4>{User} due bill info goes here and each linked to a transaction form </h4> -->
                                 <!-- create a clickable list of USERS leading to a modal form to fill up units -->
-                                <div class="table-responsive">
-                                    <table class="table table-hover table-striped table-bordered table-condensed">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>USER</th>
-                                                <th>UNITS</th>
-                                                <th>BILL DATE</th>
-                                                <th>DUE DATE</th>
-                                                <th>GENERATE</th>    
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php 
-                                            $result = retrieve_bill_data();
-                                            // Initialising #
-                                            $counter = 1;
-                                            echo $row['bdate'];
-                                            while($row = mysqli_fetch_assoc($result)){
-                                            ?>
-                                                <tr>
-                                                    <form action="generate_bill.php" method="post">
-                                                        <td height="40"><?php echo $counter ?></td>
+                                
+                                    <?php
+                                    $sql = "SELECT curdate1()";
+                                    $result = mysqli_query($con,$sql);
+                                    if($result === FALSE) {
+                                        echo "FAILED";
+                                        die(mysql_error()); 
+                                    }
+                                    $row = mysqli_fetch_row($result);
+                                    // echo $row[0];
+                                    if ($row[0] == 1) {
+                                        include("generate_bill_table.php") ;
+                                    }
+                                    else
+                                    {
+                                        echo "<div class=\"text-danger text-center\" style=\"padding-top:100px; font-size: 30px;\">";
+                                        echo " <b><u>BILL TO BE GENERATED ONLY ON THE FIRST OF THE MONTH</u></b>";
+                                        echo " </div>" ;
+                                    }
+                                     
+                                    ?>
+                            </div> 
 
-                                                        <input type="hidden" name="uid" value=<?php echo $row['uid'] ?> >
-                                                        <input type="hidden" name="uname" value=<?php echo $row['uname'] ?> >
-                                                        
-                                                        <td>
-                                                            <?php echo $row['uname'] ?>
-                                                        </td>
-                                                        <td>                                                
-                                                            <input class="form-control" type="tel" name="units" placeholder="ENTER UNITS">
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $row['bdate'] ?> 
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $row['ddate'] ?>
-                                                        </td>
-                                                        <td>
-                                                            <button type="submit" name="generate_bill" class="btn btn-success form-control">GENERATE BILL  </button>
-                                                        </td>
-                                                        
-                                                        
-                                                    </form>
-                                                </tr>
-                                            <?php
-                                            $counter = $counter +1;
-                                            }
-                                            ?>
-                                        </tbody>
-                                        
-                                    </table>
-
-                                </div>
-
-
-
-                            </div>
                         </div>
                         <!-- /.tab-content -->
                     </div>
@@ -164,3 +130,4 @@
 </body>
 
 </html>
+
