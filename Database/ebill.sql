@@ -105,9 +105,9 @@ CREATE TABLE IF NOT EXISTS `bill` (
 -- NOTE:
 -- STATUS OF `TRANSACTION` CANNOT BE REFERECED FROM STATUS OF `BILL` BEACUSE OF ITS LACK OF BEING UNIQUE KEY
 -- THEREFORE A TRIGGER HAS TO BE IMPLEMENTED
-INSERT INTO bill (aid,uid,units,amount,status,bdate,ddate) VALUES
-(1,1,700,14000,'PENDING','2014-01-09','2014-01-10'),
-(1,1,800,16000,'PENDING','2014-01-07','2014-01-08');
+-- INSERT INTO bill (aid,uid,units,amount,status,bdate,ddate) VALUES
+-- (1,1,700,14000,'PENDING','2014-01-09','2014-01-10'),
+-- (1,1,800,16000,'PENDING','2014-01-07','2014-01-08');
 -- --------------------------------------------------------
 
 --
@@ -129,9 +129,9 @@ CREATE TABLE IF NOT EXISTS `transaction` (
 -- Dumping data for table `transaction`
 --
 -- stored procedure to handle duedate extrafees
-INSERT INTO transaction(bid,payable,pdate,status) VALUES
-(1,14000,NULL,'PENDING'),
-(2,18000,'2014-09-09','PROCESSED');
+-- INSERT INTO transaction(bid,payable,pdate,status) VALUES
+-- (1,14000,NULL,'PENDING'),
+-- (2,18000,'2014-09-09','PROCESSED');
 
 -- --------------------------------------------------------
 
@@ -153,10 +153,10 @@ CREATE TABLE IF NOT EXISTS `complaint` (
 --
 -- Dumping data for table `complaint`
 --
-INSERT INTO complaint(uid,aid,complaint,status) VALUES
-(1,1,"Bill shows not processed","NOT PROCESSED"),
-(2,1,"Transaction not confirmed","NOT PROCESSED"),
-(1,1,"Previous Complaint still pending","NOT PROCESSED");
+-- INSERT INTO complaint(uid,aid,complaint,status) VALUES
+-- (1,1,"Bill shows not processed","NOT PROCESSED"),
+-- (2,1,"Transaction not confirmed","NOT PROCESSED"),
+-- (1,1,"Previous Complaint still pending","NOT PROCESSED");
 
 -- --------------------------------------------------------
 
@@ -213,6 +213,26 @@ END
 //
 delimiter ;
 -- CALL UNITSTOAMOUNT BY : CALL unitstoamount(700,@x)// 
+
+-- FUNCTION TO GET CURRENT DATE(1ST OF MONTH)
+
+delimiter //
+DROP FUNCTION IF EXISTS `curdate1`;
+CREATE FUNCTION curdate1()
+returns int
+BEGIN
+    DECLARE x INT;
+    SET x = DAYOFMONTH(CURDATE());
+    IF (x=1)
+    THEN
+        RETURN 1;
+    ELSE
+        RETURN 0;
+    END IF;
+END
+//
+delimiter ;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
