@@ -31,8 +31,12 @@
                     </div>
                 </div>
                 <!-- /.row -->
-                <?php 
-                 ?>
+                 <?php 
+
+                        list($result1,$result2,) = retrieve_users_defaulting($_SESSION['aid']);
+                        $row1 = mysqli_fetch_row($result1);
+                        $row2 = mysqli_fetch_row($result2);
+                ?>
                 <div class="row">
                     <div class="col-lg-3 col-xs-6">
                         <div class="panel panel-bolt">
@@ -42,12 +46,12 @@
                                         <i class="fa fa-rupee fa-3x"></i>
                                     </div>
                                     <div class="col-md-9 text-right">
-                                        <div class="huge"><b></b>26</div>
+                                        <div class="huge"><b></b><?php echo $row1[0] ?></div>
                                         <div>USER LATE!</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="#" data-toggle="modal" data-target="#late">
                                 <div class="panel-footer">
                                     <span class="pull-left"><b>ADD DUES</b></span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right fa-2x"></i></span>
@@ -65,12 +69,12 @@
                                         <i class="fa fa-bullhorn fa-3x"></i>
                                     </div>
                                     <div class="col-md-9 text-right">
-                                        <div class="huge"><b></b>26</div>
+                                        <div class="huge"><b></b><?php echo $row2[0] ?></div>
                                         <div>USER DEFAULTING!</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="#" data-toggle="modal" data-target="#defaulting">
                                 <div class="panel-footer">
                                     <span class="pull-left"><b>REMOVE USER(s)</b></span>
                                     <span class="pull-right"><i class="fa fa-trash fa-2x"></i></span>
@@ -81,6 +85,7 @@
                     </div> <!-- ./panel-closes -->
                 </div><!-- ./row -->
 
+                <!-- STATISTICS -->
                 <h1 style="padding-left:30px; "><small>Stats</small></h1>
                 <div class="row" style="margin-top: 20px;">
                     <div class=".col-lg-3 col-xs-8">
@@ -138,8 +143,46 @@
 
                 </div><!-- ./row -->
 
-                
-                <hr />
+                 <!-- New Modal FOR DISHING OUT DUES-->
+                                <div class="modal fade" id="late" tabindex="-1" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                <h4 class="modal-title"><h3><b>ADD DUES TO USERS</b></h3>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <p><h4>ARE YOU SURE?</h4></p>
+                                                <p>Do it today or forever hold your speech!</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">NO</button>
+                                                <!-- <form action="dash_defaulting_users.php" method="post"></form> -->                                                
+                                                <button type="button" id="late_user" name="late_user" class="btn btn-success ">YES</button>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
+                 <!-- New Modal FOR REMOVING USERS-->
+                                <div class="modal fade" id="defaulting" tabindex="-1" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                <h4 class="modal-title"><h3><b>DELETE USERS</b></h3>
+                                            </div>
+                                            <div class="modal-body text-center">
+                                                <p><h4>ARE YOU SURE?</h4></p>
+                                                <p>Do it today or forever hold your speech!</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-dismiss="modal">NO</button>
+                                                <!-- <form action="dash_defaulting_users.php" method="post"></form> -->
+                                                <button type="button" id="defaulting_user" name="defaulting_user" class="btn btn-success ">YES</button>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
 
             </div><!-- /.container-fluid -->
         </div>
