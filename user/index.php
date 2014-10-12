@@ -21,14 +21,66 @@
                             Dashboard
                             <small>Overview</small>
                         </h1>
-                      <!--   <?php
+                        <?php
                             require_once("../Includes/session.php");
                             require_once("../Includes/config.php");
-                            $uid = $_SESSION['uid'];
-                            $sql= " SELECT * FROM complaint where id='$uid' ";
-                            $result = mysqli_query($con,$sql); 
-                            echo mysqli_num_rows($result);
-                        ?> -->
+                        ?>
+                        <!-- STATISTICS -->
+                        <h1 style="padding-left:30px;" class="text-muted text-centered">Stats</h1>
+                        <div class="row" style="margin-top: 20px;">
+                            <div class=".col-lg-3 col-xs-8">
+                            <?php 
+                                // list($result1,$result2,$result3) = retrieve_admin_stats($_SESSION['aid']);
+                                // $row1 = mysqli_fetch_row($result1);
+                                // $row2 = mysqli_fetch_row($result2);
+                                // $row3 = mysqli_fetch_row($result3);
+                             ?>
+                                <table class="table  ">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <h4>Number of Bills | PAYED</h4>
+                                            </td>
+                                            <td class="success">
+                                            <h4>
+                                                <?php 
+                                                    // echo $row2[0];
+                                                ?>
+                                            </h4>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <h4>Number of Bills | PENDING</h4>
+                                            </td>
+                                            <td class="danger">
+                                                <h4>
+                                                    <?php 
+                                                        // echo $row1[0];
+                                                    ?>
+                                                </h4>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <h4>Number of Complaints | Unprocessed</h4>
+                                            </td>
+                                            <td class="success">
+                                                <h4>
+                                                    <?php 
+                                                        // echo $row3[0];
+                                                    ?>
+                                                </h4>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> <!-- ./col-md-12 -->
+
+                        </div><!-- ./row -->
 
 
                     </div>
