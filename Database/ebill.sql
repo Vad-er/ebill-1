@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 -- Dumping data for table `admin`
 --
--- NOTE:implement insertion using stored procedure
+
 INSERT INTO admin (name,email,pass) VALUES
 ("admin1","admin1@bolt.com","adminadminadmin"),
 ("admin2","admin2@bolt.com","adminadmin");
@@ -66,7 +66,6 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 -- Dumping data for table `user`
 --
--- NOTE:implement using stored procedure
 INSERT INTO user (name,email,phone,pass,address) VALUES
 ("Ameen Khan","ameenkhan07@gmail.com",9654327656,"qwerty","Jamia nagar"),
 ("Abhishek Bhatnagar","abhishek@gmail.com",999999999,"qwerty1","Ghaziabad"),
@@ -97,17 +96,8 @@ CREATE TABLE IF NOT EXISTS `bill` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
---
--- Dumping data for table `bill`
---
-
 -- stored procedure to handle duedate and amount(units*rateperunit)
--- NOTE:
--- STATUS OF `TRANSACTION` CANNOT BE REFERECED FROM STATUS OF `BILL` BEACUSE OF ITS LACK OF BEING UNIQUE KEY
--- THEREFORE A TRIGGER HAS TO BE IMPLEMENTED
--- INSERT INTO bill (aid,uid,units,amount,status,bdate,ddate) VALUES
--- (1,1,700,14000,'PENDING','2014-01-09','2014-01-10'),
--- (1,1,800,16000,'PENDING','2014-01-07','2014-01-08');
+
 -- --------------------------------------------------------
 
 --
@@ -125,13 +115,6 @@ CREATE TABLE IF NOT EXISTS `transaction` (
   
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `transaction`
---
--- stored procedure to handle duedate extrafees
--- INSERT INTO transaction(bid,payable,pdate,status) VALUES
--- (1,14000,NULL,'PENDING'),
--- (2,18000,'2014-09-09','PROCESSED');
 
 -- --------------------------------------------------------
 
@@ -150,13 +133,7 @@ CREATE TABLE IF NOT EXISTS `complaint` (
   FOREIGN KEY (uid) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `complaint`
---
--- INSERT INTO complaint(uid,aid,complaint,status) VALUES
--- (1,1,"Bill shows not processed","NOT PROCESSED"),
--- (2,1,"Transaction not confirmed","NOT PROCESSED"),
--- (1,1,"Previous Complaint still pending","NOT PROCESSED");
+;
 
 -- --------------------------------------------------------
 
