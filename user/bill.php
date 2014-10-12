@@ -98,32 +98,71 @@
                                             while($row = mysqli_fetch_assoc($result)){
                                             ?>
                                                 <tr>
+                                                    <form action="transact_bill.php" method="post">
                                                     <td height="40"><?php echo $counter ?></td>
+
+                                                    <input type="hidden" name="bdate" value=<?php echo $row['bdate'] ?> >
                                                     <td><?php echo $row['bdate'] ?></td>
+
+                                                    <input type="hidden" name="units" value=<?php echo $row['units'] ?> >
                                                     <td><?php echo $row['units'] ?></td>
+
+                                                    <input type="hidden" name="ddate" value=<?php echo $row['ddate'] ?> >
                                                     <td><?php echo $row['ddate'] ?></td>
+
+                                                    <input type="hidden" name="amount" value=<?php echo $row['amount'] ?> >
                                                     <td><?php echo $row['amount'] ?></td>
+
+                                                    <!-- <input type="hidden" name="" value=<?php echo $row[''] ?> > -->
                                                     <td><?php echo $row['dues'] ?></td>
+
+                                                    <input type="hidden" name="payable" value=<?php echo $row['payable'] ?> >
                                                     <td><?php echo $row['payable'] ?></td>
+
                                                     <td>
-                                                    <button type="submit" class="btn btn-success">PAY</button>
+                                                    <button class="btn btn-success form-control" data-toggle="modal"  data-target="#PAY">PAY</button>
+                                                    <!--TRANSACT BILL MODAL -->
+                                                    <div class="modal fade" id="PAY" tabindex="-1" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-sm">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                                    <h3 class="modal-title text-centre"><b>TRANSACT BILL</b></h3>
+                                                                </div>
+                                                                <div class="modal-body text-center">
+                                                                    <h4>ARE YOU SURE?</h4>
+                                                                    <p>Do it before <?php echo $row['ddate']; ?> or DUES will served!!</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">LATER</button>
+                                                                        <button type="submit" id="pay_bill" name="pay_bill" class="btn btn-success ">PAY</button>
+                                                    </form> 
+                                                                </div>
+                                                            </div><!-- /.modal-content -->
+                                                        </div><!-- /.modal-dialog -->
+                                                    </div><!-- /.modal -->
                                                 </td>
                                                 </tr>
                                             <?php 
                                                 $counter=$counter+1;
                                             }
                                             ?>
+                                        </tbody>
                                     </table>
-                                    <!-- search db where id is his and status due -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <!-- /.row -->
-            </div>
-            <!-- /.container-fluid -->
+                                
+
+                                </div><!-- ./table-responsive -->
+
+                            </div> <!-- .tab-pane -->
+                           
+                        </div><!-- .tab-content -->
+
+                    </div><!-- /.col-lg-12 -->
+                    
+                </div> <!-- /.row -->
+               
+            </div><!-- /.container-fluid -->
+            
 
         </div>
         <!-- /#page-content-wrapper -->

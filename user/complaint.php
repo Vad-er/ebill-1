@@ -22,7 +22,7 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Complaint
-                            <button class="btn btn-primary" data-toggle="modal" style="position:relative;left:800px" data-target="#Complaint">New Complaint</button>           
+                            <button class="btn btn-primary" data-toggle="modal" style="position:relative;left:70%" data-target="#Complaint">New Complaint</button>           
                         </h1>
                         <ol class="breadcrumb">
                           <li>Complaint</li>
