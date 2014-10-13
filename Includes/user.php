@@ -37,4 +37,16 @@
         return $result;
     }
 
+    function retrieve_user_details($id) {
+        include 'config.php';
+        $query  = "SELECT * FROM user ";
+        $result = mysqli_query($con,$query);
+        if (!$result)
+            {
+                die('Error: ' . mysqli_error($con));
+            }  
+        return $result;
+    }
+
+
  ?>

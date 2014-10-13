@@ -68,7 +68,7 @@ if(isset($_POST['login_submit'])) {
                 </button>
                 <a class="navbar-brand" href="#"><i class="fa fa-bolt"></i><b>Bolt</b></a>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" >
                 <?php include("login.php"); ?>
             </div>
             <!--/.nav-collapse -->

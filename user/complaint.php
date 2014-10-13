@@ -76,6 +76,7 @@
                                                         <!-- <textarea class="form-control" id="complaint" name="complaint" placeholder="Complaint Goes here"></textarea> -->
                                                         <select  class="form-control" id="complaint" name="complaint" placeholder="select your grievance">
                                                             <!-- <option value="">Select your grivance</option> -->
+                                                            <option value="" disabled selected>Select your option</option>
                                                             <option value="Bill Not Correct">Bill Not Correct</option>
                                                             <option value="Bill Generated Late">Bill Generated Late</option>
                                                             <option value="Transaction Not Processed">Transaction Not Processed</option>
