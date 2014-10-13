@@ -61,9 +61,15 @@ h6 {
 .navbar{
     background: #000;
 }
+.navbar {
+    border-bottom-right-radius: 21px 21px;
+    border-top-right-radius: 4px 4px;
+    margin-right:2px;
+}
 .navbar-brand{
     font-family: 'Lato', sans-serif;
-    font-size: 20px;
+    font-size: 25px;
+    font-weight: 600;
     padding-left: 10px;
     margin-left: 80px;
 }
@@ -115,7 +121,7 @@ ul.alert-dropdown {
     padding-bottom: 25px;
     line-height: 70px;
     font-family: 'Lato', sans-serif;
-    font-size: 17px;
+    font-size: 20px;
 }
 
 .sidebar-nav li a {
@@ -165,13 +171,13 @@ ul.alert-dropdown {
         margin-right: 0;
     }
 }
-.footer{
+/*.footer{
     background-color: #ececec;
     min-width: 100%;
     padding-top:-60px;
 
 }
-/* Tables Styles */
+*//* Tables Styles */
 .table-responsive{
     padding-top: 20px;
     padding-bottom: 20px;
@@ -192,4 +198,6 @@ footer .footer-below {
     padding-left: 50px;
     /*background-color: #233140;*/
     background-color: #efefef;
+    /*position: relative;*/
+    /*bottom: 0;*/
 }

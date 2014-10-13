@@ -31,11 +31,10 @@
                     </div>
                 </div>
                 <!-- /.row -->
-                 <?php 
-
-                        list($result1,$result2,) = retrieve_users_defaulting($_SESSION['aid']);
-                        $row1 = mysqli_fetch_row($result1);
-                        $row2 = mysqli_fetch_row($result2);
+                <?php 
+                    list($result1,$result2,) = retrieve_users_defaulting($_SESSION['aid']);
+                    $row1 = mysqli_fetch_row($result1);
+                    $row2 = mysqli_fetch_row($result2);
                 ?>
                 <div class="row">
                     <div class="col-lg-3 col-xs-6">
@@ -90,7 +89,6 @@
                 <div class="row" style="margin-top: 20px;">
                     <div class=".col-lg-3 col-xs-8">
                     <?php 
-
                         list($result1,$result2,$result3) = retrieve_admin_stats($_SESSION['aid']);
                         $row1 = mysqli_fetch_row($result1);
                         $row2 = mysqli_fetch_row($result2);

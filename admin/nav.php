@@ -20,6 +20,9 @@
         <a class="navbar-brand" href="index.php"><i class="fa fa-bolt"></i> BOLT</a>
     </div>
     <!-- /.navbar-header -->
+    
+    <a style="position:absolute;top:35px;left:-1px;font-size:20px;color:#7f7f7f;padding:5px;background-color: #000;border-bottom-right-radius:10px; " href="#menu-toggle" id="menu-toggle" <i class="fa fa-dedent"></i></a>
+
 
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
