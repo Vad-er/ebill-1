@@ -48,34 +48,37 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php 
+                                    $id=$_SESSION['uid'];
+                                    $query1 = "SELECT COUNT(*) FROM bill , transaction WHERE transaction.bid=bill.id AND bill.uid={$id}  ";
+                                    $result1 = mysqli_query($con,$query1);
+                                    $row1 = mysqli_fetch_row($result1);
+                                    $numrows = $row1[0];
+                                    include("paging1.php");
+                                    
+                                    $result = retrieve_transaction_history($_SESSION['uid'],$offset, $rowsperpage);
+                                    while($row = mysqli_fetch_assoc($result)){
+                                    ?>
+                                        <tr>
+                                            <td height="40"><?php echo $row['id'] ?></td>
+                                            <td><?php echo $row['bdate'] ?></td>
+                                            <td><?php echo $row['amount'] ?></td>
+                                            <td><?php echo $row['dues'] ?></td>
+                                            <td><?php echo $row['payable'] ?></td>
+                                            <td>
                                             <?php 
-                                            $result = retrieve_transaction_history($_SESSION['uid']);
-                                            // Initialising #
-                                            $counter = 1;
-                                            while($row = mysqli_fetch_assoc($result)){
-                                            ?>
-                                                <tr>
-                                                    <td height="40"><?php echo $counter ?></td>
-                                                    <td><?php echo $row['bdate'] ?></td>
-                                                    <td><?php echo $row['amount'] ?></td>
-                                                    <td><?php echo $row['dues'] ?></td>
-                                                    <td><?php echo $row['payable'] ?></td>
-                                                    <td>
-                                                    <?php 
-                                                        if($row['pdate']!=NULL) echo $row['pdate'];
-                                                        else echo "TRANSACTION PENDING";
-                                                     ?></td>
-                                                </tr>
-                                            <?php 
-                                                $counter=$counter+1;
-                                            }
-                                            ?>
-                                        </tbody>
+                                                if($row['pdate']!=NULL) echo $row['pdate'];
+                                                else echo "TRANSACTION PENDING";
+                                             ?></td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
                             </table>
+                            <?php include("paging2.php");  ?>
                         </div>
-                        <!-- <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle DASH</a> -->
+                        <!-- .table-responsive -->
                     </div>
-                <!-- /.col-lg-12 -->                    
+                    <!-- /.col-lg-12 -->                    
                 </div>
                 <!-- /.row -->
             </div>
