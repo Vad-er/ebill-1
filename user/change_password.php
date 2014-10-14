@@ -12,11 +12,12 @@
     
     $id=$_SESSION['uid'];
     $new_password=test_input($_POST["new_password"]);
+    $new_password="$new_password";
     
     if(isset($_POST["change"]) && !empty($_POST["change"]))
     {
         $query  = "UPDATE user ";
-        $query .= "set pass = {'$new_password'} ";
+        $query .= "set pass = {$new_password} ";
         $query .= "WHERE id = {$id} ";
         if (!mysqli_query($con,$query))
             {

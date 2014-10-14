@@ -52,6 +52,8 @@
     $result = retrieve_user_details($_SESSION['uid']);
     $row = mysqli_fetch_assoc($result);
  ?>
+
+ <!-- MODAL -> USER INFO -->
 <div class="modal fade" id="profile" tabindex="-1" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -69,6 +71,8 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->      
 
+
+<!-- MODAL -> CHANGING PASSWORD -->
 <div class="modal fade" id="change_password" tabindex="-1" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -79,7 +83,8 @@
 <form action="change_password.php" method="post">                  
         <div class="modal-body text-center">
             <h4>Current Password:<code><?php echo $row['pass'] ?></code></h4>
-            <h4>New Password:<input type="pass" placeholder="NEW PASSWORD" name="new_password" id="new_password" ></h4>
+            <h4>New Password:</h4>
+            <input class="form-control" type="password" placeholder="NEW PASSWORD" name="new_password" id="new_password" >
         </div>
         <div class="modal-footer">                                        
                 <button type="button" class="btn btn-danger" data-dismiss="modal">CANCEL</button>
