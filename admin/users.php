@@ -45,26 +45,28 @@
                                     </thead>
                                     <tbody>
                                      <?php 
+                                            $id=$_SESSION['aid'];
+                                            $query1 = "SELECT COUNT(*) FROM user";
+                                            $result1 = mysqli_query($con,$query1);
+                                            $row1 = mysqli_fetch_row($result1);
+                                            $numrows = $row1[0];
+                                            include("paging1.php");
                                             // include('../Includes/admin.php');
-                                            $result = retrieve_users_detail($_SESSION['aid']);
+                                            $result = retrieve_users_detail($_SESSION['aid'],$offset, $rowsperpage);
 
-                                            // Initialising #
-                                            $counter = 1;
                                             while($row = mysqli_fetch_assoc($result)){
                                             ?>
                                                 <tr>
-                                                    <td height="40"><?php echo $counter ?></td>
+                                                    <td height="40"><?php echo $row['id'] ?></td>
                                                     <td><?php echo $row['name'] ?></td>
                                                     <td><?php echo $row['email'] ?></td>
                                                     <td><?php echo $row['phone'] ?></td>
                                                     <td><?php echo $row['address'] ?></td>                                                    
                                                 </tr>
-                                            <?php 
-                                                $counter=$counter+1;
-                                            }
-                                        ?>
+                                            <?php } ?>
                                     </tbody>
                                 </table>
+                                <?php include("paging2.php");  ?>
                         </div>
                         <!-- ./table -rsponsive -->
                         

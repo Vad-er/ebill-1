@@ -238,3 +238,12 @@ footer .footer-below {
 .panel-bolt2 a:hover {
     color: #0e0e16;
 }
+/*BADGE CUSTOM COLOR*/
+.badge-custom-success{
+    background-color: #5cb85c;
+}
+.badge-custom-primary{
+    background-color: #428bca;
+}
+
+

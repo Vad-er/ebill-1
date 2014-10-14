@@ -45,7 +45,7 @@
                                 <tbody>
                                     <?php 
                                     $id=$_SESSION['uid'];
-                                    $query1 = "SELECT COUNT(*) FROM complaint where uid={$id} ORDER BY id DESC";
+                                    $query1 = "SELECT COUNT(*) FROM complaint where uid={$id}";
                                     $result1 = mysqli_query($con,$query1);
                                     $row1 = mysqli_fetch_row($result1);
                                     $numrows = $row1[0];

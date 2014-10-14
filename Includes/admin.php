@@ -1,12 +1,14 @@
 <?php 
 
-    function retrieve_bills_generated($id) {
-        include("config.php");
+    function retrieve_bills_generated($id,$offset, $rowsperpage) {
+        require_once("config.php");global $con;
         $query  = "SELECT user.name AS user, bill.bdate AS bdate , bill.units AS units , bill.amount AS amount ";
         $query .= ", bill.ddate AS ddate, bill.status AS status ";
         $query .= " FROM user , bill ";
         $query .= " WHERE user.id=bill.uid AND aid={$id} ";
-        $query .= " ORDER BY bill.id DESC";
+        $query .= " ORDER BY bill.id DESC ";
+        $query .= "LIMIT {$offset}, {$rowsperpage} ";
+
         $result = mysqli_query($con,$query);
         if($result === FALSE) {
             die(mysql_error()); // TODO: better error handling
@@ -14,9 +16,10 @@
         return $result;
     }
 
-    function retrieve_bill_data(){
-        include("config.php");
-        $query = "SELECT curdate() AS bdate , adddate( curdate(),INTERVAL 30 DAY ) AS ddate , user.id AS uid , user.name AS uname FROM user";
+    function retrieve_bill_data($offset, $rowsperpage){
+        require_once("config.php");global $con;
+        $query  = "SELECT curdate() AS bdate , adddate( curdate(),INTERVAL 30 DAY ) AS ddate , user.id AS uid , user.name AS uname FROM user ";
+        $query .= " LIMIT {$offset}, {$rowsperpage} ";
         // echo $query;
         $result = mysqli_query($con,$query);
         if($result === FALSE) {
@@ -25,13 +28,15 @@
         return $result;
     }
 
-    function retrieve_complaints_history($id)
+    function retrieve_complaints_history($id,$offset, $rowsperpage)
     {
-        include("config.php");
+        require_once("config.php");global $con;
         $query  = "SELECT complaint.id AS id , complaint.complaint AS complaint , complaint.status AS status , user.name AS uname ";
         $query .= "FROM user , complaint ";
-        $query  .= "WHERE complaint.uid=user.id AND status='NOT PROCESSED' AND complaint.aid={$id} ";
-        $query  .= "ORDER BY complaint.id desc  ";
+        $query .= "WHERE complaint.uid=user.id AND status='NOT PROCESSED' AND complaint.aid={$id} ";
+        $query .= "ORDER BY complaint.id desc  ";
+        $query .= " LIMIT {$offset}, {$rowsperpage} ";
+
         $result = mysqli_query($con,$query);
         if($result === FALSE) {
             die(mysql_error()); // TODO: better error handling
@@ -41,10 +46,11 @@
 
     }
 
-    function retrieve_users_detail()
+    function retrieve_users_detail($id,$offset, $rowsperpage)
     {
-        include("config.php");
-        $query  = "SELECT * FROM user";
+        require_once("config.php");global $con;
+        $query  = "SELECT * FROM user ";
+        $query .= " LIMIT {$offset}, {$rowsperpage} ";
         $result = mysqli_query($con,$query);
         if($result === FALSE) {
             die(mysql_error()); // TODO: better error handling
@@ -54,7 +60,7 @@
 
     function retrieve_admin_stats($id)
     {
-        include("config.php");
+        require_once("config.php");global $con;
         $query1  = " SELECT count(id) AS unprocessed_bills FROM bill  WHERE status = 'PENDING'  AND aid = {$id} ";
         $query2  = " SELECT count(id) AS generated_bills FROM bill  WHERE aid = {$id} " ;
         $query3  = " SELECT count(id) AS unprocessed_complaints from complaint where status='NOT PROCESSED' AND aid = {$id} ";
@@ -82,7 +88,7 @@
     }
 
     function retrieve_users_defaulting($id){
-        include("config.php");
+        require_once("config.php");global $con;
 
         //TODO : adjust for transaction .payable for delayed action!!!!!!! 
         //query for late
@@ -113,7 +119,7 @@
     }
 
     function insert_into_transaction($id,$amount){
-            include("config.php");
+            require_once("config.php");global $con;
             $query = "INSERT INTO transaction (bid,payable,pdate,status) ";
             $query .= "VALUES ({$id}, {$amount} , NULL , 'PENDING' )";
             // echo $query3;

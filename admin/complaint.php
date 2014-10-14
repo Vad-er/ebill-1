@@ -44,7 +44,14 @@
                                     </thead>
                                     <tbody>
                                         <?php 
-                                            $result = retrieve_complaints_history($_SESSION['aid']);
+                                            $id=$_SESSION['aid'];
+                                            $query1 = "SELECT COUNT(complaint.id) FROM user , complaint ";
+                                            $query1.= " WHERE complaint.uid=user.id AND status='NOT PROCESSED' AND complaint.aid={$id}";
+                                            $result1 = mysqli_query($con,$query1);
+                                            $row1 = mysqli_fetch_row($result1);
+                                            $numrows = $row1[0];
+                                            include("paging1.php");
+                                            $result = retrieve_complaints_history($_SESSION['aid'],$offset, $rowsperpage);
                                             // Initialising #
                                             $counter = 1;
                                             while($row = mysqli_fetch_assoc($result)){
@@ -68,6 +75,7 @@
                                         ?>
                                     </tbody>
                                 </table>
+                                <?php include("paging2.php");  ?>
                             </div>
                             <!-- /.table-responsive -->
 

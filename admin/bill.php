@@ -56,7 +56,13 @@
                                         </thead>
                                         <tbody>
                                         <?php
-                                            $result = retrieve_bills_generated($_SESSION['aid']);
+                                            $id=$_SESSION['aid'];
+                                            $query1 = "SELECT COUNT(user.name) FROM user,bill WHERE user.id=bill.uid AND aid={$id}";
+                                            $result1 = mysqli_query($con,$query1);
+                                            $row1 = mysqli_fetch_row($result1);
+                                            $numrows = $row1[0];
+                                            include("paging1.php");
+                                            $result = retrieve_bills_generated($_SESSION['aid'],$offset, $rowsperpage);
                                             // Initialising #
                                             $counter = 1;
                                             while($row = mysqli_fetch_assoc($result)){
@@ -75,11 +81,12 @@
                                             }
                                             ?>
                                         </tbody>
-                                        
                                     </table>
-
+                                    <?php include("paging2.php");  ?>
                                 </div>
+                                <!-- .table-responsive -->
                             </div>
+                            <!-- .tab-genereated -->
 
                             <div class="tab-pane fade" id="generate">
                                 <!-- <h4>{User} due bill info goes here and each linked to a transaction form </h4> -->
