@@ -30,10 +30,10 @@
                         <div class="row" style="margin-top: 20px;">
                             <div class=".col-lg-3 col-xs-8">
                             <?php 
-                                // list($result1,$result2,$result3) = retrieve_admin_stats($_SESSION['aid']);
-                                // $row1 = mysqli_fetch_row($result1);
-                                // $row2 = mysqli_fetch_row($result2);
-                                // $row3 = mysqli_fetch_row($result3);
+                                list($result1,$result2,$result3) = retrieve_user_stats($_SESSION['uid']);
+                                $row1 = mysqli_fetch_row($result1);
+                                $row2 = mysqli_fetch_row($result2);
+                                $row3 = mysqli_fetch_row($result3);
                              ?>
                                 <table class="table  ">
                                     <tbody>
@@ -44,7 +44,7 @@
                                             <td class="success">
                                             <h4>
                                                 <?php 
-                                                    // echo $row2[0];
+                                                    echo $row2[0];
                                                 ?>
                                             </h4>
                                             </td>
@@ -57,7 +57,7 @@
                                             <td class="danger">
                                                 <h4>
                                                     <?php 
-                                                        // echo $row1[0];
+                                                        echo $row1[0];
                                                     ?>
                                                 </h4>
                                             </td>
@@ -70,10 +70,9 @@
                                             <td class="success">
                                                 <h4>
                                                     <?php 
-                                                        // echo $row3[0];
+                                                        echo $row3[0];
                                                     ?>
                                                 </h4>
-
                                             </td>
                                         </tr>
                                     </tbody>
