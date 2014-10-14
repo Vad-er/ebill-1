@@ -6,3 +6,6 @@ ELECTRICITY BILL MANAGEMENT SYSTEM
 ## TODO
 * Redesign Landing page to include raw data about the potal and and signup in a modal popup <meh...>
 * Change passowrd functionality for user
+
+#### PS
+![:(](http://github.com/ameenkhan07/ebill/final_statement.jpg "-_-")
