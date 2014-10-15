@@ -5,7 +5,9 @@
 
     $aid = $_SESSION['aid'];
     //set dafaulted variables
-    $result = retrieve_bill_data();
+
+    $query  = "SELECT curdate() AS bdate , adddate( curdate(),INTERVAL 30 DAY ) AS ddate , user.id AS uid , user.name AS uname FROM user ";
+    $result = mysqli_query($con,$query);
     $row = mysqli_fetch_assoc($result);
     
     $bdate = $row['bdate'];

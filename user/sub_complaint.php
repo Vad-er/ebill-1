@@ -10,8 +10,8 @@
     if(isset($_POST["complaint"]) && !empty($_POST["complaint"]))
     {
         $query  = "INSERT INTO complaint(uid,aid,complaint,status)";
-    $query .= " VALUES ({$id},{$aid},'{$comp}','NOT PROCESSED')";
-    mysqli_query($con,$query);  
+        $query .= " VALUES ({$id},{$aid},'{$comp}','NOT PROCESSED')";
+        mysqli_query($con,$query);  
     }
     
     header("Location:complaint.php");   

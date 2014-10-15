@@ -45,7 +45,7 @@
                                     <tbody>
                                         <?php 
                                             $id=$_SESSION['aid'];
-                                            $query1 = "SELECT COUNT(complaint.id) FROM user , complaint ";
+                                            $query1 = "SELECT COUNT(complaint.id) FROM user , complaint  ";
                                             $query1.= " WHERE complaint.uid=user.id AND status='NOT PROCESSED' AND complaint.aid={$id}";
                                             $result1 = mysqli_query($con,$query1);
                                             $row1 = mysqli_fetch_row($result1);

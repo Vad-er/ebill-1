@@ -73,7 +73,7 @@
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                        <h4 class="modal-title">New Complaint</h4>
+                                        <h3 class="modal-title text-danger"><b>New Complaint</b></h3>
                                     </div>
                                     <div class="modal-body">
                                         <form class="form-horizontal new_complaint"  role="form"  action="sub_complaint.php" method="post">
@@ -89,11 +89,15 @@
                                                     <option value="Transaction Not Processed">Transaction Not Processed</option>
                                                     <option value="Previous Complaint Not Processed">Previous Complaint Not Processed</option>
                                                 </select>
+                                                <!-- <h4 class="text-center">Complaints are submitted automatiaclly after <code>SUBMIT</code></h4> -->
                                             </div>
-                                            
-                                        <button id="submit" name="submit" class="btn btn-primary">Submit</button>
+                                    </div>    
+                                    <div class="modal-footer">
+                                        <button id="submit" name="submit" class="btn btn-lg btn-success">Submit</button>
+                                    </div>    
+                                        
                                     </form>
-                                    </div>
+                                    
                                 </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                         </div><!-- /.modal -->

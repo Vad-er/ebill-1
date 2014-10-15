@@ -28,7 +28,7 @@
         return $result;
     }
 
-    function retrieve_complaints_history($id,$offset, $rowsperpage)
+    function retrieve_complaints_history($id,$offset,$rowsperpage)
     {
         require_once("config.php");global $con;
         $query  = "SELECT complaint.id AS id , complaint.complaint AS complaint , complaint.status AS status , user.name AS uname ";

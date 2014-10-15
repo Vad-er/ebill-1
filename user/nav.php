@@ -17,7 +17,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button> -->
-        <a class="navbar-brand" href="index.html"><i class="fa fa-bolt"></i> BOLT</a> 
+        <a class="navbar-brand" href="index.php"><i class="fa fa-bolt"></i> BOLT</a> 
     </div>
     <!-- /.navbar-header -->
     
@@ -80,6 +80,7 @@
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 <h3 class="modal-title"><b><i class="fa fa-fw fa-gear"></i>Settings</b></h3>
             </div> 
+            <?php include("change_password.php") ?>
 <form action="change_password.php" method="post">                  
         <div class="modal-body text-center">
             <h4>Current Password:<code><?php echo $row['pass'] ?></code></h4>
