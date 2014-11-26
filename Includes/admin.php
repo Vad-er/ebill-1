@@ -84,30 +84,31 @@
     function retrieve_users_defaulting($id){
         include("config.php");
 
-        //TODO : adjust for transaction .payable!!!!!!! 
-        // AND bill.id=transaction.bid AND transaction.payable=bill.amount
-        
+        //TODO : adjust for transaction .payable for delayed action!!!!!!! 
         //query for late
-        $query1  = "SELECT COUNT(*) FROM bill ";
-        $query1 .= "WHERE curdate() > bill.ddate AND curdate() < adddate(bill.ddate , INTERVAL 20 DAY ) ";
+        $query1  = "SELECT COUNT(*) FROM bill , transaction ";
+        $query1 .= "WHERE curdate() > bill.ddate AND curdate() < adddate(bill.ddate , INTERVAL 25 DAY ) ";
         $query1 .= "AND bill.aid={$id} AND bill.status='PENDING' ";
+        $query1 .= "AND bill.amount = transaction.payable AND bill.id=transaction.bid ";
 
-        //query for defaulting
-        $query2  = "SELECT COUNT(*) FROM bill ";
-        $query2 .= "WHERE curdate() > adddate(bill.ddate , INTERVAL 20 DAY ) ";
+        //query for defaulting 
+        //remove user and all relating data
+        $query2  = "SELECT COUNT(*) FROM bill  ";
+        $query2 .= "WHERE curdate() > adddate(bill.ddate , INTERVAL 25 DAY ) ";
         $query2 .= "AND bill.aid={$id} AND bill.status='PENDING' ";
 
+
         $result1 = mysqli_query($con,$query1);
-        if($result1 === FALSE) {
-            echo "FAILED1";
-            die(mysql_error()); // TODO: better error handling
-        }
+        if (!$result1)
+            {
+                die('1Error: ' . mysqli_error($con));
+            }
 
         $result2 = mysqli_query($con,$query2);
-        if($result2 === FALSE) {
-            echo "FAILED2";
-            die(mysql_error()); // TODO: better error handling
-        }
+        if (!$result2)
+            {
+                die('2Error: ' . mysqli_error($con));
+            }
         return array($result1,$result2,);
     }
 
@@ -116,7 +117,6 @@
             $query = "INSERT INTO transaction (bid,payable,pdate,status) ";
             $query .= "VALUES ({$id}, {$amount} , NULL , 'PENDING' )";
             // echo $query3;
-            
             if (!mysqli_query($con,$query))
             {
                 die('Error: ' . mysqli_error($con));
