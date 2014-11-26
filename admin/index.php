@@ -149,16 +149,17 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                <h4 class="modal-title"><h3><b>ADD DUES TO USERS</b></h3>
+                                                <h3 class="modal-title"><b>ADD DUES TO USERS</b></h3>
                                             </div>
                                             <div class="modal-body text-center">
                                                 <p><h4>ARE YOU SURE?</h4></p>
                                                 <p>Do it today or forever hold your speech!</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">NO</button>
-                                                <!-- <form action="dash_defaulting_users.php" method="post"></form> -->                                                
-                                                <button type="button" id="late_user" name="late_user" class="btn btn-success ">YES</button>
+                                                <form action="dash_defaulting_users.php" method="post">                                               
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">NO</button>
+                                                    <button type="submit" id="late_user" name="late_user" class="btn btn-success ">YES</button>
+                                                </form> 
                                             </div>
                                         </div><!-- /.modal-content -->
                                     </div><!-- /.modal-dialog -->
@@ -169,16 +170,17 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                <h4 class="modal-title"><h3><b>DELETE USERS</b></h3>
+                                                <h3 class="modal-title"><b>DELETE USERS</b></h3>
                                             </div>
                                             <div class="modal-body text-center">
                                                 <p><h4>ARE YOU SURE?</h4></p>
                                                 <p>Do it today or forever hold your speech!</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">NO</button>
-                                                <!-- <form action="dash_defaulting_users.php" method="post"></form> -->
-                                                <button type="button" id="defaulting_user" name="defaulting_user" class="btn btn-success ">YES</button>
+                                                <form action="dash_defaulting_users.php" method="post">
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">NO</button>
+                                                    <button type="submit" id="defaulting_user" name="defaulting_user" class="btn btn-success ">YES</button>
+                                                </form>
                                             </div>
                                         </div><!-- /.modal-content -->
                                     </div><!-- /.modal-dialog -->
