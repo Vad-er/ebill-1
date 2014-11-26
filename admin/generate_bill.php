@@ -55,9 +55,6 @@
             $row = mysqli_fetch_row($result3);
 
             $bid = $row[0];$amount=$row[1];
-            // echo $bid; 
-            // echo " ";
-            // echo $amount;
             insert_into_transaction($bid,$amount);
             
         }  
